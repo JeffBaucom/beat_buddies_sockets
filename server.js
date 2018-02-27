@@ -21,15 +21,23 @@ io.sockets.on('connection', function (socket) {
   console.log("Client/socket id is: ", socket.id);
 
 socket.on("note_on", function(data) { // recieve the noteChange object as data
-  console.log("note clicked:", data);
-
+//  console.log("note clicked:", data);
   socket.broadcast.emit('add_note', data); //broadcast with the noteChange object
 })
 
 socket.on("tempo_changed", function(data) {
-    console.log("tempo changed:", data);
-
+//    console.log("tempo changed:", data);
     socket.broadcast.emit('change_tempo', data);
+});
+
+socket.on("transport_play", function(data) {
+//    console.log("tempo changed:", data);
+    socket.broadcast.emit('transport_play', data);
+});
+
+socket.on("transport_stop", function(data) {
+//    console.log("tempo changed:", data);
+    socket.broadcast.emit('transport_stop', data);
 });
 
 })
