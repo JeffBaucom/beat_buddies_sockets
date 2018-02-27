@@ -5,6 +5,9 @@
     <title></title>
     <script src="./node_modules/tone/build/Tone.js"></script>
     <script src="./node_modules/nexusui/dist/NexusUI.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+
 </head>
 <body>
     <div id="content">
@@ -15,7 +18,7 @@
     <div>
     <span nexus-ui='sequencer' id="drums"></span>
     </div>
-    
+
     <script>
 var sequencer = new Nexus.Sequencer("#matrix", {
     'size': [400, 200],
@@ -25,23 +28,32 @@ var sequencer = new Nexus.Sequencer("#matrix", {
 });
 
 var drums = new Nexus.Sequencer("#drums", {
-    'size': [400, 100],
+    'size': [400, 200],
     'mode': 'toggle',
-    'matrixLabels': ['Kick', 'HH', 'Snare'],
-    'rows': 3,
+    // 'matrixLabels': ['Kick', 'HH', 'Snare'],
+    'rows': 8,
     'columns': 16
 });
 
-drums.colorize('fill', '#333');
+drums.colorize('fill', '#547AFF');
+drums.colorize("accent","#BAFFAD")
 
 sequencer.colorize('fill', '#111');
 
 var notes = ['C4', 'D4', 'E4', 'F4', 'G4']
 
-var keys = new Tone.Players({
-    "C4" : "./sounds/kick.wav",
-    "D4" : "./sounds/hh.wav",
-    "E4" : "./sounds/snare.wav"
+var kit = ['crash','cowbell', 'hey', 'shaker', 'hh','clap','snare','kick' ]
+
+var kitSounds = new Tone.Players({
+  "hey" : "./sounds/hey.wav",
+  "crash" : "./sounds/crash.WAV",
+  "cowbell" : "./sounds/cowbell.wav",
+  "shaker" : "./sounds/shaker.wav",
+  "hh" : "./sounds/hh.wav",
+  "snare" : "./sounds/snare.wav",
+  "clap" : "./sounds/clap.wav",
+  "kick" : "./sounds/kick.wav",
+
 }, {"volume" : -10, "fadeOut": "64n"}).toMaster();
 
 var synth = new Tone.Synth().toMaster()
@@ -54,31 +66,59 @@ var loop = new Tone.Sequence(function(time, row) {
         }
     }
 
-    for (var j = 0; j < 3; j++) {
+    for (var j = 0; j < 8; j++) {
         //console.log(drums.matrix.pattern[j][row]);
         if (drums.matrix.pattern[j][row] == 1) {
             //console.log(notes[i]);
-            keys.get(notes[j]).start(time, 0, '32n', 0, 0.5);
+            kitSounds.get(kit[j]).start(time, 0, '1n', 0, 0.5);
         }
     }
-    
+
 
 }
 , [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], '16n');
 
 
 
-sequencer.on('change', function(v) {
-    console.log(v);
-});
 
-drums.on('change', function(v) {
-    console.log(v);
-});
-Tone.Transport.bpm.value = 120;
+Tone.Transport.bpm.value = 110;
 
 Tone.Transport.start();
 loop.start();
+
+
+// ####################################SOCKETS####################################
+$(document).ready(function (){
+  //instantiate the socket:
+ var socket  = io.connect();
+ var noteChange =  {};
+
+ sequencer.on('change', function(v) {
+     console.log(v);
+ });
+//saves the value of the note into the variable
+ drums.on('change', function(v) {
+   // noteChange = v;
+   socket.emit("note_on", v);
+ });
+  //Upon clicking on a child of #drums, emit with the noteChange object
+  // $('#drums').children().click(function() {
+  //
+  // })
+//receive the broadcast and toggle the cell
+  socket.on('add_note', function(data) {
+    console.log("note change received from server", data);
+    if (drums.matrix.pattern[data.row][data.column] != data.state ) { //if the pattern value is already true, don't toggle
+      drums.matrix.toggle.cell(data.column, data.row);
+    }
+    // console.log("column:", data.column);
+    // console.log("row", data.row);
+  })
+
+});
+
+// ####################################END SOCKETS####################################
+
 
     </script>
 </body>
