@@ -28,23 +28,32 @@ var sequencer = new Nexus.Sequencer("#matrix", {
 });
 
 var drums = new Nexus.Sequencer("#drums", {
-    'size': [400, 100],
+    'size': [400, 200],
     'mode': 'toggle',
-    'matrixLabels': ['Kick', 'HH', 'Snare'],
-    'rows': 3,
+    // 'matrixLabels': ['Kick', 'HH', 'Snare'],
+    'rows': 8,
     'columns': 16
 });
 
-drums.colorize('fill', '#333');
+drums.colorize('fill', '#547AFF');
+drums.colorize("accent","#BAFFAD")
 
 sequencer.colorize('fill', '#111');
 
 var notes = ['C4', 'D4', 'E4', 'F4', 'G4']
 
-var keys = new Tone.Players({
-    "C4" : "./sounds/kick.wav",
-    "D4" : "./sounds/hh.wav",
-    "E4" : "./sounds/snare.wav"
+var kit = ['crash','cowbell', 'hey', 'shaker', 'hh','clap','snare','kick' ]
+
+var kitSounds = new Tone.Players({
+  "hey" : "./sounds/hey.wav",
+  "crash" : "./sounds/crash.WAV",
+  "cowbell" : "./sounds/cowbell.wav",
+  "shaker" : "./sounds/shaker.wav",
+  "hh" : "./sounds/hh.wav",
+  "snare" : "./sounds/snare.wav",
+  "clap" : "./sounds/clap.wav",
+  "kick" : "./sounds/kick.wav",
+
 }, {"volume" : -10, "fadeOut": "64n"}).toMaster();
 
 var synth = new Tone.Synth().toMaster()
@@ -57,11 +66,11 @@ var loop = new Tone.Sequence(function(time, row) {
         }
     }
 
-    for (var j = 0; j < 3; j++) {
+    for (var j = 0; j < 8; j++) {
         //console.log(drums.matrix.pattern[j][row]);
         if (drums.matrix.pattern[j][row] == 1) {
             //console.log(notes[i]);
-            keys.get(notes[j]).start(time, 0, '32n', 0, 0.5);
+            kitSounds.get(kit[j]).start(time, 0, '1n', 0, 0.5);
         }
     }
 
@@ -72,7 +81,7 @@ var loop = new Tone.Sequence(function(time, row) {
 
 
 
-Tone.Transport.bpm.value = 120;
+Tone.Transport.bpm.value = 110;
 
 Tone.Transport.start();
 loop.start();
