@@ -15,9 +15,11 @@
     </div>
     <div nexus-ui='sequencer' id="matrix">
     </div>
-    <div>
-    <span nexus-ui='sequencer' id="drums"></span>
+    <div nexus-ui='sequencer' id="drums">
     </div>
+    <div nexus-ui='slider' id='tempoSlider'>
+    </div>
+    <div nexus-ui='number' id='tempoNumber'></div>
 
     <script>
 var sequencer = new Nexus.Sequencer("#matrix", {
@@ -79,9 +81,23 @@ var loop = new Tone.Sequence(function(time, row) {
 , [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], '16n');
 
 
+// Declare slider and attach to div id
+var tempoSlider = new Nexus.Slider('#tempoSlider', {
+    'size': [240, 20],
+    'min': 1,
+    'max': 250,
+    'mode': 'absolute',
+    'step': 1,
+    'value': 110
+});
+
+//initialize tempo at current value
+Tone.Transport.bpm.value = tempoSlider.value;
 
 
-Tone.Transport.bpm.value = 110;
+var tempoNumber = new Nexus.Number('#tempoNumber');
+
+tempoNumber.link(tempoSlider);
 
 Tone.Transport.start();
 loop.start();
@@ -101,6 +117,14 @@ $(document).ready(function (){
    // noteChange = v;
    socket.emit("note_on", v);
  });
+
+//send tempo change with value
+tempoSlider.on('change', function(v) {
+    //change the tempo on value change
+    Tone.Transport.bpm.value = v;
+    socket.emit('tempo_changed', v);
+
+});
   //Upon clicking on a child of #drums, emit with the noteChange object
   // $('#drums').children().click(function() {
   //
@@ -114,6 +138,11 @@ $(document).ready(function (){
     // console.log("column:", data.column);
     // console.log("row", data.row);
   })
+socket.on('change_tempo', function(data) {
+    if (tempoSlider.value != data) {
+        tempoSlider.value = data;
+    }
+});
 
 });
 

@@ -26,5 +26,10 @@ socket.on("note_on", function(data) { // recieve the noteChange object as data
   socket.broadcast.emit('add_note', data); //broadcast with the noteChange object
 })
 
+socket.on("tempo_changed", function(data) {
+    console.log("tempo changed:", data);
+
+    socket.broadcast.emit('change_tempo', data);
+});
 
 })
