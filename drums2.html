@@ -18,18 +18,12 @@
     <div nexus-ui='sequencer' id="drums">
     </div>
 
-    <div id="kick-selector" class="kick-selector">
-    </div>
+
 
     <div id="snare-options">
 
     </div>
 
-    <div id="mixer">
-      <div id="kick-channel" class = "kick-channel">
-
-      </div>
-    </div>
     <script>
     $(document).ready(function (){
      var socket  = io.connect();
@@ -135,17 +129,17 @@ var snare =   kitSounds.get('snare')
 var snareSolo = new Tone.Solo();
 var snareVolume = new Tone.Volume([ volume = -15 ]);
 
-// var snareSoloButton = new Nexus.Button('#snare-options', {
-//   'size': [40,40],
-// 'mode': 'toggle',
-// 'state': false
-// })
+var snareSoloButton = new Nexus.Button('#snare-options', {
+  'size': [40,40],
+'mode': 'toggle',
+'state': false
+})
 snare.chain(snareVolume, snareSolo,  Tone.Master);
-//
-// snareSoloButton.on('change', function(v) {
-//   snareSolo.solo = v;
-  //
-  // })
+
+snareSoloButton.on('change', function(v) {
+  snareSolo.solo = v;
+
+  })
 
 
 

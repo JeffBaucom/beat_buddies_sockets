@@ -17,12 +17,23 @@
     </div>
     <div nexus-ui='sequencer' id="drums">
     </div>
+    <div id="kick-selector" class="kick-selector">
+    </div>
     <div nexus-ui='slider' id='tempoSlider'> </div>
     <div nexus-ui='number' id='tempoNumber'></div>
     <div nexus-ui='textbutton' id='play'></div>
     <div nexus-ui='textbutton' id='stop'></div>
+    <div id="mixer">
+      <div id="kick-channel" class = "kick-channel">
 
+      </div>
+    </div>
     <script>
+    $(document).ready(function (){
+      //instantiate the socket:
+     var socket  = io.connect();
+
+
 var sequencer = new Nexus.Sequencer("#matrix", {
     'size': [400, 200],
     'mode': 'toggle',
@@ -45,19 +56,20 @@ sequencer.colorize('fill', '#111');
 
 var notes = ['C4', 'D4', 'E4', 'F4', 'G4']
 
-var kit = ['crash','cowbell', 'hey', 'shaker', 'hh','clap','snare','kick' ]
+var kit = ['cym','perc2', 'perc1', 'tom1', 'tom2','hh','snare','kick' ]
 
 var kitSounds = new Tone.Players({
-  "hey" : "./sounds/hey.wav",
-  "crash" : "./sounds/crash.WAV",
-  "cowbell" : "./sounds/cowbell.wav",
-  "shaker" : "./sounds/shaker.wav",
-  "hh" : "./sounds/hh.wav",
-  "snare" : "./sounds/snare.wav",
-  "clap" : "./sounds/clap.wav",
-  "kick" : "./sounds/kick.wav",
+  "cym" : "./sounds/cym/crash.wav",
+  "perc1" : "./sounds/perc1/clap.WAV",
+  "perc2" : "./sounds/perc2/cowbell.wav",
+  "tom1" : "./sounds/tom1/tom.wav",
+  "tom2" : "./sounds/tom2/tom3.wav",
+  "hh" : "./sounds/hh/hh.wav",
+  "snare" : "./sounds/snares/snare.wav",
+  "kick" : "./sounds/kicks/kick.wav",
 
-}, {"volume" : -10, "fadeOut": "64n"}).toMaster();
+}, {"volume" : -15, "fadeOut": "64n"}).toMaster();
+//DISABLE TO MASTER FOR CHANNEL STRIP CONTROL
 
 var synth = new Tone.Synth().toMaster()
 
@@ -107,15 +119,85 @@ var stop = new Nexus.TextButton('#stop', {
     'text': 'Stop'
 });
 
+
+
+// kick channel:
+
+var kick =   kitSounds.get('kick') //get the player
+var kickSolo = new Tone.Solo(); //add a solo button
+var kickVolume = new Tone.Volume([ volume = -15 ]); //add a volume control
+var kickSoloButton = new Nexus.TextButton('#kick-channel', { //create the solo button UI
+  'size': [40,40],
+'alternateText': 'S',
+'state': false,
+'text': 'S'
+})
+
+var kickMuteButton = new Nexus.TextButton('#kick-channel', { //create the mute button UI
+  'size': [40,40],
+'alternateText': 'M',
+'state': false,
+'text': 'M'
+})
+
+var kickSelector = new Nexus.Select('#kick-selector',{ //instrument selector UI
+  'size': [80,40],
+  'options': ['kick','kick2']
+})
+
+var kickClear = new Nexus.TextButton ('#kick-channel', { //create the clear button ui
+  'size': [40,40],
+'mode': 'aftertouch',
+'state': false,
+'text': 'C'
+})
+
+  kick.chain(kickVolume, kickSolo,  Tone.Master); //connect the volume and solo buttons
+
+  kickSoloButton.on('change', function(v) { //activate the solo button -- REMOVE ALL PLAYERS TO MASTER
+    kickSolo.solo = v;
+    console.log(v);
+
+  })
+  kickMuteButton.on('change', function(v) { //activate the mute button
+    kick.mute = v;
+  })
+
+  kickClear.on('change', function(v) { //activate the clear button
+    drums.matrix.populate.row(7, [0,0])
+
+  })
+  kickSelector.on('change', function(v) { //selector
+      kitSounds.get('kick').load("./sounds/kicks/" + v.value + ".wav");
+    })
+
+
+//snare channel:
+// var snare =   kitSounds.get('snare')
+// var snareSolo = new Tone.Solo();
+// var snareVolume = new Tone.Volume([ volume = -15 ]);
+//
+// var snareSoloButton = new Nexus.Button('#snare-options', {
+//   'size': [40,40],
+// 'mode': 'toggle',
+// 'state': false
+// })
+// snare.chain(snareVolume, snareSolo,  Tone.Master);
+//
+// snareSoloButton.on('change', function(v) {
+//   snareSolo.solo = v;
+//
+//   })
+
+
+
 Tone.Transport.start();
 loop.start();
 
 
 // ####################################SOCKETS####################################
-$(document).ready(function (){
-  //instantiate the socket:
- var socket  = io.connect();
- var noteChange =  {};
+
+
 
  sequencer.on('change', function(v) {
      console.log(v);
