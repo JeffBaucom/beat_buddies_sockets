@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./node_modules/tone/build/Tone.js"></script>
+    <script src="./node_modules/nexusui/dist/NexusUI.js"></script>
+</head>
+<body>
+    <div id="content">
+
+    </div>
+    <div nexus-ui='sequencer' id="matrix">
+    </div>
+    <div>
+    <span nexus-ui='sequencer' id="drums"></span>
+    </div>
+    
+    <script>
+var sequencer = new Nexus.Sequencer("#matrix", {
+    'size': [400, 200],
+    'mode': 'toggle',
+    'rows': 5,
+    'columns': 16
+});
+
+var drums = new Nexus.Sequencer("#drums", {
+    'size': [400, 100],
+    'mode': 'toggle',
+    'matrixLabels': ['Kick', 'HH', 'Snare'],
+    'rows': 3,
+    'columns': 16
+});
+
+drums.colorize('fill', '#333');
+
+sequencer.colorize('fill', '#111');
+
+var notes = ['C4', 'D4', 'E4', 'F4', 'G4']
+
+var keys = new Tone.Players({
+    "C4" : "./sounds/kick.wav",
+    "D4" : "./sounds/hh.wav",
+    "E4" : "./sounds/snare.wav"
+}, {"volume" : -10, "fadeOut": "64n"}).toMaster();
+
+var synth = new Tone.Synth().toMaster()
+
+var loop = new Tone.Sequence(function(time, row) {
+    for (var i = 0; i < 5; i++) {
+        if (sequencer.matrix.pattern[i][row] == 1) {
+            //console.log(notes[i]);
+            synth.triggerAttackRelease(notes[i], '64n');
+        }
+    }
+
+    for (var j = 0; j < 3; j++) {
+        //console.log(drums.matrix.pattern[j][row]);
+        if (drums.matrix.pattern[j][row] == 1) {
+            //console.log(notes[i]);
+            keys.get(notes[j]).start(time, 0, '32n', 0, 0.5);
+        }
+    }
+    
+
+}
+, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], '16n');
+
+
+
+sequencer.on('change', function(v) {
+    console.log(v);
+});
+
+drums.on('change', function(v) {
+    console.log(v);
+});
+Tone.Transport.bpm.value = 120;
+
+Tone.Transport.start();
+loop.start();
+
+    </script>
+</body>
+</html>

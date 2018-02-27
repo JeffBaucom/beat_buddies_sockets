@@ -1,0 +1,16 @@
+{
+  "name": "synth_sketch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nexusui": "^2.0.5",
+    "tone": "^0.11.11"
+  }
+}
