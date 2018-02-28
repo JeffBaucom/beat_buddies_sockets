@@ -19,7 +19,7 @@
     <div nexus-ui='sequencer' id="matrix">
     </div>
     <div id="drum-container" class="drums">
-      <div id="presets" class="presets">
+      <div id="labels" class="presets">
         <div id="cym-label" class="label"></div>
         <div id="perc1-label" class="label"></div>
         <div id="perc2-label" class="label"></div>
@@ -29,8 +29,10 @@
         <div id="snare-label" class="label"></div>
         <div id="kick-label" class="label"></div>
       </div>
+
       <div nexus-ui='sequencer' id="drums" class="drum-matrix">
       </div>
+      <div id="drum-selector"></div>
     </div>
     <div id="transport" >
       <div id="tempo" >
@@ -74,11 +76,9 @@ var sequencer = new Nexus.Sequencer("#matrix", {
 });
 
 
-
 sequencer.colorize('fill', '#111');
 
-var notes = ['C4', 'D4', 'E4', 'F4', 'G4']
-
+var notes = ['C4', 'D4', 'E4', 'F4', 'G4'];
 
 
 var synth = new Tone.Synth().toMaster()
@@ -117,7 +117,6 @@ var tempoSlider = new Nexus.Slider('#tempoSlider', {
 //initialize tempo at current value
 Tone.Transport.bpm.value = tempoSlider.value;
 
-
 var tempoNumber = new Nexus.Number('#tempoNumber');
 
 tempoNumber.link(tempoSlider);
@@ -130,13 +129,6 @@ var stop = new Nexus.TextButton('#stop', {
 });
 
 
-
-
-
-
-
-
-
 Tone.Transport.start();
 loop.start();
 
@@ -144,56 +136,18 @@ loop.start();
 // ####################################SOCKETS####################################
 
 
-
- sequencer.on('change', function(v) {
-     console.log(v);
- });
-
-//send tempo change with value
-tempoSlider.on('change', function(v) {
-    //change the tempo on value change
-    Tone.Transport.bpm.value = v;
-    socket.emit('tempo_changed', v);
-
-});
-
-play.on('change', function(v) {
-    Tone.Transport.start();
-    socket.emit("transport_play", v);
-});
-
-stop.on('change', function(v) {
-    Tone.Transport.stop();
-    socket.emit("transport_stop", v);
-});
-  //Upon clicking on a child of #drums, emit with the noteChange object
-  // $('#drums').children().click(function() {
-  //
-  // })
-
-    // console.log("column:", data.column);
-    // console.log("row", data.row);
-  // })
-socket.on('change_tempo', function(data) {
-    if (tempoSlider.value != data) {
-        tempoSlider.value = data;
-    }
-});
-
-socket.on('transport_play', function(v) {
-    Tone.Transport.start();
-});
-
-socket.on('transport_stop', function(v) {
-    Tone.Transport.stop();
-});
-
+ // sequencer.on('change', function(v) {
+ //     console.log(v);
+ // });
 
 // ####################################END SOCKETS####################################
 
 
 </script>
 <script type ="text/javascript" src="./js/drums.js"></script>
+<script type ="text/javascript" src="./js/drum_channels.js"></script>
+<script type ="text/javascript" src="./js/channel_strip_sockets.js"></script>
+<script type ="text/javascript" src="./js/transport.js"></script>
 
 
 </body>
