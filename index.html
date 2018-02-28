@@ -18,21 +18,48 @@
     </div>
     <div nexus-ui='sequencer' id="matrix">
     </div>
-    <div id="drum-container" class="d-flex flex-column">
-      <div id="presets" class="d-flex flex-row">
+    <div id="drum-container" class="drums">
+      <div id="presets" class="presets">
+        <div id="cym-label" class="label"></div>
+        <div id="perc1-label" class="label"></div>
+        <div id="perc2-label" class="label"></div>
+        <div id="tom1-label" class="label"></div>
+        <div id="tom2-label" class="label"></div>
+        <div id="hh-label" class="label"></div>
+        <div id="snare-label" class="label"></div>
+        <div id="kick-label" class="label"></div>
       </div>
-      <div nexus-ui='sequencer' id="drums" class="d-flex flex-column">
+      <div nexus-ui='sequencer' id="drums" class="drum-matrix">
       </div>
     </div>
-    <div id="transport" class="d-flex flex-column" >
-      <div nexus-ui='slider' id='tempoSlider' class="d-flex flex-row"> </div>
-      <div nexus-ui='number' id='tempoNumber'class="d-flex flex-row"></div>
-      <div nexus-ui='textbutton' id='play' class="d-flex flex-row"></div>
-      <div nexus-ui='textbutton' id='stop' class="d-flex flex-row"></div>
+    <div id="transport" >
+      <div id="tempo" >
+        <div nexus-ui='slider' id='tempoSlider'> </div>
+        <div nexus-ui='number' id='tempoNumber'></div>
+      </div>
+      <div id="play-stop" class="d-flex flex-row">
+        <div nexus-ui='textbutton' id='play' ></div>
+        <div nexus-ui='textbutton' id='stop' ></div>
+      </div>
     </div>
-    <div id="mixer" class = "d-flex flex-column">
-      <div id="kick-channel" class = "kick-channel d-flex flex-column"></div>
-      <div id="snare-channel" class = "snare-channel d-flex flex-column"></div>
+    <div id="mixer" class = "d-flex flex-row">
+
+      <div id="kick-channel" class = "kick-channel d-flex flex-column"> Kick</div>
+
+      <div id="snare-channel" class = "snare-channel d-flex flex-column">Snare</div>
+
+      <div id="hh-channel" class ="hh-channel d-flex flex-column">HH</div>
+
+      <div id="tom2-channel" class = "tom2-channel d-flex flex-column">Tom2</div>
+
+      <div id="tom1-channel" class = "tom1-channel d-flex flex-column">Tom1</div>
+
+      <div id="perc2-channel" class = "perc2-channel d-flex flex-column">Perc2</div>
+
+      <div id="perc1-channel" class = "perc1-channel d-flex flex-column">Perc1</div>
+
+      <div id="cym-channel" class = "cym-channel d-flex flex-column">Cym</div>
+
     </div>
     <script>
     //instantiate the socket:
