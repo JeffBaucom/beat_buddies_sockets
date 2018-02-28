@@ -1,5 +1,3 @@
-var socket  = io.connect();
-
 //Mutes
 socket.on('cymMute', function(toggle) {
   if (toggle != cymMuteButton.state) {
