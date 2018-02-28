@@ -1,4 +1,4 @@
-var socket  = io.connect();
+
 var drumGrid = [600, 300];
 
 // buttons are 200/8 tall
@@ -181,17 +181,37 @@ drumPresets.on('change', function(v) { //selector
 
   // SOCKETS
 
-//ALL DRUMS
+// ALL DRUMS
+var drumUpdate = {} //global variable to save the change into
+
 drums.on('change', function(v) {
- socket.emit("note_on", v);
+drumUpdate = v; //reassign drumUpdate for the new change
+// console.log(drumUpdate);
 });
 
+$('#drums').children().click(function(v) {
+  socket.emit("note_on", drumUpdate)
+})
+// IDEA: to enable dragging, send entire pattern on drag-end or mouseup
 
-//change drums
+
+//receive the broadcast and toggle the cell
+socket.on('add_note', function(data) {
+  // console.log("received from the server");
+  // console.log("note change received from server", data);
+  if (drums.matrix.pattern[data.row][data.column] != data.state) { //if the pattern value is already true, don't toggle
+    drums.matrix.toggle.cell(data.column, data.row);
+  }
+  });
+
+
+
+
+//DRUM SELECTOR
 socket.on("changeDrums", function(kit) {
-  console.log(drumPresets);
-  console.log(drumPresets._value)
-  console.log(kit)
+  // console.log(drumPresets);
+  // console.log(drumPresets._value)
+  // console.log(kit)
   if (drumPresets._value != kit) {
 
     drumPresets._value = kit;
@@ -200,11 +220,3 @@ socket.on("changeDrums", function(kit) {
 })
 
 //RECEIVERS
-//receive the broadcast and toggle the cell
-
-socket.on('add_note', function(data) {
-  console.log("note change received from server", data);
-  if (drums.matrix.pattern[data.row][data.column] != data.state ) { //if the pattern value is already true, don't toggle
-    drums.matrix.toggle.cell(data.column, data.row);
-  }
-});
