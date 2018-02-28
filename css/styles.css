@@ -8,17 +8,21 @@ body {
 }
 
 
-/* #drum-container {
-  display: inline-block;
+.drums {
+/* display: flex;
+flex-direction: column;
+align-items: flex-start; */
+
 }
 
-/* .selector {
-  display: block;
-} */
-/* #drums {
-  display: inline-block;
+.presets {
 }
 
-#selectors {
-  display: inline-block;
-} */
+.label {
+
+}
+
+.drum-matrix {
+margin-left: 100px;
+
+}
