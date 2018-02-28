@@ -9,20 +9,27 @@ body {
 
 
 .drums {
-/* display: flex;
+display: flex;
 flex-direction: column;
-align-items: flex-start; */
+align-items: flex-start;
 
 }
 
 .presets {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
 }
 
 .label {
+  /* display: flex;
+  flex-direction: row;
+  align-items: flex-start; */
 
 }
 
-.drum-matrix {
+.drum-matrix{
 margin-left: 100px;
-
+/* background-color: red; */
 }

@@ -1,5 +1,5 @@
 var socket  = io.connect();
-var drumGrid = [400, 200];
+var drumGrid = [600, 300];
 
 // buttons are 200/8 tall
 
@@ -255,7 +255,7 @@ var snareClear = new Nexus.TextButton ('#snare-channel', { //create the clear bu
   })
 
   snareClear.on('change', function(v) { //activate the clear button
-    drums.matrix.populate.row(7, [0,0])
+    drums.matrix.populate.row(6, [0,0])
 
   })
 
@@ -296,7 +296,7 @@ var hhClear = new Nexus.TextButton ('#hh-channel', { //create the clear button u
   })
 
   hhClear.on('change', function(v) { //activate the clear button
-    drums.matrix.populate.row(7, [0,0])
+    drums.matrix.populate.row(5, [0,0])
 
   })
 
@@ -336,7 +336,7 @@ var hhClear = new Nexus.TextButton ('#hh-channel', { //create the clear button u
     })
 
     tom2Clear.on('change', function(v) { //activate the clear button
-      drums.matrix.populate.row(7, [0,0])
+      drums.matrix.populate.row(4, [0,0])
 
     })
 
@@ -377,7 +377,7 @@ var tom1Clear = new Nexus.TextButton ('#tom1-channel', { //create the clear butt
   })
 
   tom1Clear.on('change', function(v) { //activate the clear button
-    drums.matrix.populate.row(7, [0,0])
+    drums.matrix.populate.row(3, [0,0])
 
   })
 
@@ -417,7 +417,7 @@ var perc2Clear = new Nexus.TextButton ('#perc2-channel', { //create the clear bu
   })
 
   perc2Clear.on('change', function(v) { //activate the clear button
-    drums.matrix.populate.row(7, [0,0])
+    drums.matrix.populate.row(2, [0,0])
 
   })
 
@@ -459,7 +459,7 @@ var perc1Clear = new Nexus.TextButton ('#perc1-channel', { //create the clear bu
   })
 
   perc1Clear.on('change', function(v) { //activate the clear button
-    drums.matrix.populate.row(7, [0,0])
+    drums.matrix.populate.row(1, [0,0])
 
   })
 
@@ -500,7 +500,7 @@ var cymClear = new Nexus.TextButton ('#cym-channel', { //create the clear button
   })
 
   cymClear.on('change', function(v) { //activate the clear button
-    drums.matrix.populate.row(7, [0,0])
+    drums.matrix.populate.row(0, [0,0])
 
   })
   // SOCKETS
