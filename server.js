@@ -88,7 +88,10 @@ socket.on("kickSolo", function(toggle) {
 });
 
 
-
+//drum selector socket
+socket.on("changeDrums", function(value) {
+  socket.broadcast.emit("changeDrums", value);
+});
 
 
 //TRANSPORT

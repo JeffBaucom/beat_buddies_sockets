@@ -154,7 +154,7 @@ var drumPresets = new Nexus.Select('#drum-selector',{ //instrument selector UI
 })
 
 drumPresets.on('change', function(v) { //selector
-  console.log(v);
+  socket.emit("changeDrums", v.value)
   if (v.value == "Acoustic") {
     kitSounds.get('kick').load("./sounds/acoustic/kick.wav");
     kitSounds.get('snare').load("./sounds/acoustic/snare.wav");
@@ -186,6 +186,18 @@ drums.on('change', function(v) {
  socket.emit("note_on", v);
 });
 
+
+//change drums
+socket.on("changeDrums", function(kit) {
+  console.log(drumPresets);
+  console.log(drumPresets._value)
+  console.log(kit)
+  if (drumPresets._value != kit) {
+
+    drumPresets._value = kit;
+    drumPresets.value = kit;
+  }
+})
 
 //RECEIVERS
 //receive the broadcast and toggle the cell
