@@ -3,21 +3,21 @@
 var kickSolo = new Tone.Solo(); //add a solo button
 var kickVolume = new Tone.Volume([ volume = -15 ]); //add a volume control
 var kickSoloButton = new Nexus.TextButton('#kick-channel', { //create the solo button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'S',
 'state': false,
 'text': 'S'
 })
 
 var kickMuteButton = new Nexus.TextButton('#kick-channel', { //create the mute button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'M',
 'state': false,
 'text': 'M'
 })
 
-var kickClear = new Nexus.TextButton ('#kick-channel', { //create the clear button ui
-  'size': [40,40],
+var kickClear = new Nexus.TextButton ('#kick-channel-clear', { //create the clear button ui
+  'size': [35.5,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'C'
@@ -40,29 +40,34 @@ var kickClear = new Nexus.TextButton ('#kick-channel', { //create the clear butt
 
   })
 
+
   //snare channel:
 var snareSolo = new Tone.Solo(); //add a solo button
 var snareVolume = new Tone.Volume([ volume = -15 ]); //add a volume control
 var snareSoloButton = new Nexus.TextButton('#snare-channel', { //create the solo button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'S',
 'state': false,
 'text': 'S'
 })
 
 var snareMuteButton = new Nexus.TextButton('#snare-channel', { //create the mute button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'M',
 'state': false,
 'text': 'M'
 })
 
-var snareClear = new Nexus.TextButton ('#snare-channel', { //create the clear button ui
-  'size': [40,40],
+var snareClear = new Nexus.TextButton ('#snare-channel-clear', { //create the clear button ui
+  'size': [35.5,35.5],
 'mode': 'aftertouch',
 'state': false,
-'text': 'C'
+    'text': 'C',
+    "setImage" : "./icon-clear-gray.svg"
 })
+
+snareClear.colorize("fill", "./icon-clear-gray.svg")
+
 
   snare.chain(snareVolume, snareSolo,  Tone.Master); //connect the volume and solo buttons
 
@@ -86,21 +91,21 @@ var snareClear = new Nexus.TextButton ('#snare-channel', { //create the clear bu
 var hhSolo = new Tone.Solo(); //add a solo button
 var hhVolume = new Tone.Volume([ volume = -20 ]); //add a volume control
 var hhSoloButton = new Nexus.TextButton('#hh-channel', { //create the solo button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'S',
 'state': false,
 'text': 'S'
 })
 
 var hhMuteButton = new Nexus.TextButton('#hh-channel', { //create the mute button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'M',
 'state': false,
 'text': 'M'
 })
 
-var hhClear = new Nexus.TextButton ('#hh-channel', { //create the clear button ui
-  'size': [40,40],
+var hhClear = new Nexus.TextButton ('#hh-channel-clear', { //create the clear button ui
+  'size': [35.5,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'C'
@@ -127,21 +132,21 @@ var hhClear = new Nexus.TextButton ('#hh-channel', { //create the clear button u
   var tom2Solo = new Tone.Solo(); //add a solo button
   var tom2Volume = new Tone.Volume([ volume = -15 ]); //add a volume control
   var tom2SoloButton = new Nexus.TextButton('#tom2-channel', { //create the solo button UI
-    'size': [40,40],
+    'size': [35.5,35.5],
   'alternateText': 'S',
   'state': false,
   'text': 'S'
   })
 
   var tom2MuteButton = new Nexus.TextButton('#tom2-channel', { //create the mute button UI
-    'size': [40,40],
+    'size': [35.5,35.5],
   'alternateText': 'M',
   'state': false,
   'text': 'M'
   })
 
-  var tom2Clear = new Nexus.TextButton ('#tom2-channel', { //create the clear button ui
-    'size': [40,40],
+  var tom2Clear = new Nexus.TextButton ('#tom2-channel-clear', { //create the clear button ui
+    'size': [35.5,35.5],
   'mode': 'aftertouch',
   'state': false,
   'text': 'C'
@@ -169,21 +174,21 @@ var hhClear = new Nexus.TextButton ('#hh-channel', { //create the clear button u
 var tom1Solo = new Tone.Solo(); //add a solo button
 var tom1Volume = new Tone.Volume([ volume = -15 ]); //add a volume control
 var tom1SoloButton = new Nexus.TextButton('#tom1-channel', { //create the solo button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'S',
 'state': false,
 'text': 'S'
 })
 
 var tom1MuteButton = new Nexus.TextButton('#tom1-channel', { //create the mute button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'M',
 'state': false,
 'text': 'M'
 })
 
-var tom1Clear = new Nexus.TextButton ('#tom1-channel', { //create the clear button ui
-  'size': [40,40],
+var tom1Clear = new Nexus.TextButton ('#tom1-channel-clear', { //create the clear button ui
+  'size': [35.5,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'C'
@@ -211,21 +216,21 @@ var tom1Clear = new Nexus.TextButton ('#tom1-channel', { //create the clear butt
 var perc2Solo = new Tone.Solo(); //add a solo button
 var perc2Volume = new Tone.Volume([ volume = -15 ]); //add a volume control
 var perc2SoloButton = new Nexus.TextButton('#perc2-channel', { //create the solo button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'S',
 'state': false,
 'text': 'S'
 })
 
 var perc2MuteButton = new Nexus.TextButton('#perc2-channel', { //create the mute button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'M',
 'state': false,
 'text': 'M'
 })
 
-var perc2Clear = new Nexus.TextButton ('#perc2-channel', { //create the clear button ui
-  'size': [40,40],
+var perc2Clear = new Nexus.TextButton ('#perc2-channel-clear', { //create the clear button ui
+  'size': [35.5,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'C'
@@ -255,21 +260,21 @@ var perc2Clear = new Nexus.TextButton ('#perc2-channel', { //create the clear bu
 var perc1Solo = new Tone.Solo(); //add a solo button
 var perc1Volume = new Tone.Volume([ volume = -15 ]); //add a volume control
 var perc1SoloButton = new Nexus.TextButton('#perc1-channel', { //create the solo button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'S',
 'state': false,
 'text': 'S'
 })
 
 var perc1MuteButton = new Nexus.TextButton('#perc1-channel', { //create the mute button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'M',
 'state': false,
 'text': 'M'
 })
 
-var perc1Clear = new Nexus.TextButton ('#perc1-channel', { //create the clear button ui
-  'size': [40,40],
+var perc1Clear = new Nexus.TextButton ('#perc1-channel-clear', { //create the clear button ui
+  'size': [35.5,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'C'
@@ -297,21 +302,22 @@ var perc1Clear = new Nexus.TextButton ('#perc1-channel', { //create the clear bu
 var cymSolo = new Tone.Solo(); //add a solo button
 var cymVolume = new Tone.Volume([ volume = -15 ]); //add a volume control
 var cymSoloButton = new Nexus.TextButton('#cym-channel', { //create the solo button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'S',
 'state': false,
 'text': 'S'
 })
 
+
 var cymMuteButton = new Nexus.TextButton('#cym-channel', { //create the mute button UI
-  'size': [40,40],
+  'size': [35.5,35.5],
 'alternateText': 'M',
 'state': false,
 'text': 'M'
 })
 
-var cymClear = new Nexus.TextButton ('#cym-channel', { //create the clear button ui
-  'size': [40,40],
+var cymClear = new Nexus.TextButton ('#cym-channel-clear', { //create the clear button ui
+  'size': [35.5,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'C'
