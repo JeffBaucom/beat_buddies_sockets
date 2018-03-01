@@ -89,7 +89,7 @@ snareClear.colorize("fill", "./icon-clear-gray.svg")
 
     //hh channel:
 var hhSolo = new Tone.Solo(); //add a solo button
-var hhVolume = new Tone.Volume([ volume = -15 ]); //add a volume control
+var hhVolume = new Tone.Volume([ volume = -20 ]); //add a volume control
 var hhSoloButton = new Nexus.TextButton('#hh-channel', { //create the solo button UI
   'size': [35.5,35.5],
 'alternateText': 'S',

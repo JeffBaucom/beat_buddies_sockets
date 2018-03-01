@@ -16,6 +16,7 @@ drums.colorize("accent","#8ADBED")
 
 var kit = ['cym','perc2', 'perc1', 'tom2', 'tom1','hh','snare','kick' ]
 
+
 var kitSounds = new Tone.Players({
   "cym" : "./sounds/electric/crash.wav",
   "perc1" : "./sounds/electric/clap.WAV",
@@ -39,6 +40,35 @@ var tom2 = kitSounds.get('tom2') //get the player
 var perc1 = kitSounds.get('perc1') //get the player
 var perc2 = kitSounds.get('perc2') //get the player
 var cym =  kitSounds.get('cym') //get the player
+
+
+//KEYBOARD FX
+var fx = new Tone.Players({
+  "khaled" : "./sounds/fx/khaled.m4a",
+  "airhorn" : "./sounds/fx/horn.m4a"
+}, {"volume" : -15, "fadeOut": "64n"}).toMaster();
+
+var khaled = fx.get('khaled')
+var airhorn = fx.get('airhorn')
+
+$(document).keypress(function(e) {
+  console.log(e.charCode)
+  if (e.charCode == 107) {
+    console.log(khaled)//press k for khaled
+    khaled.start();
+    // socket.emit("solo_clear");
+  }
+})
+
+
+$(document).keypress(function(e) {
+  console.log(e.charCode)
+  if (e.charCode == 104) {
+    console.log(airhorn); //press h for horn
+    airhorn.start();
+    // socket.emit("solo_clear");
+  }
+})
 
 
 //MATRIX LABELS

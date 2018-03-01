@@ -89,38 +89,14 @@
     //instantiate the socket:
 var socket  = io.connect();
 
-
-var sequencer = new Nexus.Sequencer("#matrix", {
-    'size': [400, 200],
-    'mode': 'toggle',
-    'rows': 5,
-    'columns': 16
-});
-
-
-sequencer.colorize('fill', '#111');
-
-var notes = ['C4', 'D4', 'E4', 'F4', 'G4'];
-
-
-var synth = new Tone.Synth().toMaster()
-
 var loop = new Tone.Sequence(function(time, row) {
-    for (var i = 0; i < 5; i++) {
-        if (sequencer.matrix.pattern[i][row] == 1) {
+    for (var i = 0; i < 8; i++) {
+        //console.log(drums.matrix.pattern[i][row]);
+        if (drums.matrix.pattern[i][row] == 1) {
             //console.log(notes[i]);
-            synth.triggerAttackRelease(notes[i], '64n');
+            kitSounds.get(kit[i]).start(time, 0, '1n', 0, 0.5);
         }
     }
-
-    for (var j = 0; j < 8; j++) {
-        //console.log(drums.matrix.pattern[j][row]);
-        if (drums.matrix.pattern[j][row] == 1) {
-            //console.log(notes[i]);
-            kitSounds.get(kit[j]).start(time, 0, '1n', 0, 0.5);
-        }
-    }
-
 
 }
 , [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], '16n');
