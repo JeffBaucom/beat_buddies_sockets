@@ -1,11 +1,15 @@
 // UI SETUP =====================================
 //-----------------------------------------------
 var pianoDimensions = [500, 125]
-var piano = new Nexus.Piano('#piano', {
+var pianoUI = new Nexus.Piano('#piano', {
     'size': pianoDimensions,
     'mode': 'button',
     'lowNote': 24,
     'highNote': 60
+});
+
+pianoUI.on('change', function(v) {
+    console.log(v);
 });
 
 $('#piano').css('transform','rotate(-90deg) translate(-37%, -150%');
