@@ -28,7 +28,7 @@ $(document).ready(function (){
 tempoSlider.on('change', function(v) {
     //change the tempo on value change
     Tone.Transport.bpm.value = v;
-    socket.emit('tempo_changed', v);
+    // socket.emit('tempo_changed', v);
 
 });
 
@@ -45,17 +45,17 @@ tempoSlider.on('change', function(v) {
   });
 
 //RECEIVERS
-  socket.on('change_tempo', function(data) {
-      if (tempoSlider.value != data) {
-          tempoSlider.value = data;
-      }
-  });
-
-  socket.on('transport_play', function(v) {
-      Tone.Transport.start();
-  });
-
-  socket.on('transport_stop', function(v) {
-      Tone.Transport.stop();
-  });
+  // socket.on('change_tempo', function(data) {
+//       if (tempoSlider.value != data) {
+//           tempoSlider.value = data;
+//       }
+//   });
+//
+//   socket.on('transport_play', function(v) {
+//       Tone.Transport.start();
+//   });
+//
+//   socket.on('transport_stop', function(v) {
+//       Tone.Transport.stop();
+//   });
 });
