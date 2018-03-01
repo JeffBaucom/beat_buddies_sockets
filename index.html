@@ -8,7 +8,9 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
+
 
 
 </head>
@@ -25,7 +27,7 @@
 
             <div id="play-stop" class="d-flex flex-row">
               <div nexus-ui='textbutton' id='play' ></div>
-              <div nexus-ui='textbutton' id='stop' ></div>
+              <!-- <div nexus-ui='textbutton' id='stop' ></div> -->
             </div>
         </div>
 
@@ -100,33 +102,10 @@ var loop = new Tone.Sequence(function(time, row) {
 , [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], '16n');
 
 
-// Declare slider and attach to div id
-var tempoSlider = new Nexus.Slider('#tempoSlider', {
-    'size': [240, 20],
-    'min': 1,
-    'max': 250,
-    'mode': 'absolute',
-    'step': 1,
-    'value': 110
-});
-
-//initialize tempo at current value
-Tone.Transport.bpm.value = tempoSlider.value;
-
-var tempoNumber = new Nexus.Number('#tempoNumber');
-
-tempoNumber.link(tempoSlider);
-
-var play = new Nexus.TextButton('#play', {
-    'text': 'Play'
-});
-var stop = new Nexus.TextButton('#stop', {
-    'text': 'Stop'
-});
 
 
-Tone.Transport.start();
-loop.start();
+// Tone.Transport.start();
+// loop.start();
 
 
 // ####################################SOCKETS####################################

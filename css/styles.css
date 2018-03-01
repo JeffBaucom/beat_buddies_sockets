@@ -91,6 +91,7 @@ margin-left: 100px;
 #play {
     margin-right: .5em;
     height: 40px;
+    align-items: center;
 }
 
 #stop {
