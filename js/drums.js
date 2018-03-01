@@ -11,8 +11,8 @@ var drums = new Nexus.Sequencer("#drums", {
     'columns': 16
 });
 
-drums.colorize('fill', '#547AFF');
-drums.colorize("accent","#BAFFAD")
+drums.colorize('fill', '#364250');
+drums.colorize("accent","#8ADBED")
 
 var kit = ['cym','perc2', 'perc1', 'tom2', 'tom1','hh','snare','kick' ]
 
@@ -43,7 +43,7 @@ var cym =  kitSounds.get('cym') //get the player
 
 //MATRIX LABELS
 var kickLabel = new Nexus.TextButton ('#kick-label', { //create the kick button ui
-  'size': [100,25],
+  'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'kick'
@@ -56,7 +56,7 @@ kickLabel.on('change', function(v) {
 })
 
 var snareLabel = new Nexus.TextButton ('#snare-label', { //create the snare button ui
-  'size': [100,25],
+  'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'snare'
@@ -69,7 +69,7 @@ snareLabel.on('change', function(v) {
 })
 
 var hhLabel = new Nexus.TextButton ('#hh-label', { //create the hh button ui
-  'size': [100,25],
+  'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'hh'
@@ -82,7 +82,7 @@ hhLabel.on('change', function(v) {
 })
 
 var tom1Label = new Nexus.TextButton ('#tom1-label', { //create the tom1 button ui
-  'size': [100,25],
+  'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'tom1'
@@ -96,7 +96,7 @@ tom1Label.on('change', function(v) {
 
 
 var tom2Label = new Nexus.TextButton ('#tom2-label', { //create the tom2 button ui
-  'size': [100,25],
+  'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'tom2'
@@ -109,7 +109,7 @@ tom2Label.on('change', function(v) {
 })
 
 var perc1Label = new Nexus.TextButton ('#perc1-label', { //create the perc1 button ui
-  'size': [100,25],
+  'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'perc1'
@@ -122,7 +122,7 @@ perc1Label.on('change', function(v) {
 })
 
 var perc2Label = new Nexus.TextButton ('#perc2-label', { //create the perc2 button ui
-  'size': [100,25],
+  'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'perc2'
@@ -135,7 +135,7 @@ perc2Label.on('change', function(v) {
 })
 
 var cymLabel = new Nexus.TextButton ('#cym-label', { //create the cym button ui
-  'size': [100,25],
+  'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
 'text': 'cym'
@@ -149,7 +149,7 @@ cymLabel.on('change', function(v) {
 //Preset selector
 
 var drumPresets = new Nexus.Select('#drum-selector',{ //instrument selector UI
-  'size': [100,40],
+  'size': [150,35.5],
   'options': ['Electric','Acoustic']
 })
 

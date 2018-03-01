@@ -8,60 +8,82 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css"> 
 
 
 </head>
 <body>
-    <div id="content">
+    <div id="content"></div>
+    <div nexus-ui='sequencer' id="matrix"></div>
 
-    </div>
-    <div nexus-ui='sequencer' id="matrix">
-    </div>
-    <div id="drum-container" class="drums">
-      <div id="labels" class="presets">
-        <div id="cym-label" class="label"></div>
-        <div id="perc1-label" class="label"></div>
-        <div id="perc2-label" class="label"></div>
-        <div id="tom1-label" class="label"></div>
-        <div id="tom2-label" class="label"></div>
-        <div id="hh-label" class="label"></div>
-        <div id="snare-label" class="label"></div>
-        <div id="kick-label" class="label"></div>
-      </div>
+    <div class="wrapper">
+        <div id="transport" class = "d-flex flex-row justify-content-center">
+            <div id="drum-selector"></div>
 
-      <div nexus-ui='sequencer' id="drums" class="drum-matrix">
-      </div>
-      <div id="drum-selector"></div>
-    </div>
-    <div id="transport" >
-      <div id="tempo" >
-        <div nexus-ui='slider' id='tempoSlider'> </div>
-        <div nexus-ui='number' id='tempoNumber'></div>
-      </div>
-      <div id="play-stop" class="d-flex flex-row">
-        <div nexus-ui='textbutton' id='play' ></div>
-        <div nexus-ui='textbutton' id='stop' ></div>
-      </div>
-    </div>
-    <div id="mixer" class = "d-flex flex-row">
+            <div id="tempo" class = "d-flex flex-row justify-content-between">
+              <div nexus-ui='slider' id='tempoSlider'> </div>
+              <div nexus-ui='number' id='tempoNumber'></div>
+            </div>
 
-      <div id="kick-channel" class = "kick-channel d-flex flex-column"> Kick</div>
+            <div id="play-stop" class="d-flex flex-row">
+              <div nexus-ui='textbutton' id='play' ></div>
+              <div nexus-ui='textbutton' id='stop' ></div>
+            </div>
+        </div>
 
-      <div id="snare-channel" class = "snare-channel d-flex flex-column">Snare</div>
 
-      <div id="hh-channel" class ="hh-channel d-flex flex-column">HH</div>
+        <div id="drum-container" class="drums d-flex flex-row justify-content-center">
+            <div id="mixer" class = "d-flex flex-column">
+                <div class = "button-row d-flex flex-row">
+                    <div id="cym-channel-clear" class = "cym-channel d-flex flex-row"></div>
+                    <div id="cym-label" class="label"></div>
+                    <div id="cym-channel" class = "smButton cym-channel d-flex flex-row"></div>
+                </div>
 
-      <div id="tom2-channel" class = "tom2-channel d-flex flex-column">Tom2</div>
+                <div class = "button-row d-flex flex-row">
+                    <div id="perc1-channel-clear" class = "perc1-channel d-flex flex-row"></div>
+                    <div id="perc1-label" class="label"></div>
+                    <div id="perc1-channel" class = "smButton perc1-channel d-flex flex-row"></div>
+                </div>
 
-      <div id="tom1-channel" class = "tom1-channel d-flex flex-column">Tom1</div>
+                <div class = "button-row d-flex flex-row">
+                    <div id="perc2-channel-clear" class = "perc2-channel d-flex flex-row"></div>
+                    <div id="perc2-label" class="label"></div>
+                    <div id="perc2-channel" class = "smButton perc2-channel d-flex flex-row"></div>
+                </div>
 
-      <div id="perc2-channel" class = "perc2-channel d-flex flex-column">Perc2</div>
+                <div class = "button-row d-flex flex-row">
+                    <div id="tom1-channel-clear" class = "tom1-channel d-flex flex-row"></div>
+                    <div id="tom1-label" class="label"></div>
+                    <div id="tom1-channel" class = "smButton tom1-channel d-flex flex-row"></div>
+                </div>
 
-      <div id="perc1-channel" class = "perc1-channel d-flex flex-column">Perc1</div>
+                <div class = "button-row d-flex flex-row">
+                    <div id="tom2-channel-clear" class = "tom2-channel d-flex flex-row"></div>
+                    <div id="tom2-label" class="label"></div>
+                    <div id="tom2-channel" class = "smButton tom2-channel d-flex flex-row"></div>
+                </div>
 
-      <div id="cym-channel" class = "cym-channel d-flex flex-column">Cym</div>
+                <div class = "button-row d-flex flex-row">
+                    <div id="hh-channel-clear" class ="hh-channel d-flex flex-row"></div>
+                    <div id="hh-label" class="label"></div>
+                    <div id="hh-channel" class ="smButton hh-channel d-flex flex-row"></div>
+                </div>
 
+                <div class = "button-row d-flex flex-row">
+                    <div id="snare-channel-clear" class = "snare-channel d-flex flex-row"></div>
+                    <div id="snare-label" class="label"></div>
+                    <div id="snare-channel" class = "smButton snare-channel d-flex flex-row"></div>
+                </div>
+
+                <div class = "button-row d-flex flex-row">
+                    <div id="kick-channel-clear" class = "kick-channel d-flex flex-row"></div>
+                    <div id="kick-label" class="label"></div>
+                    <div id="kick-channel" class = "smButton kick-channel d-flex flex-row"></div>
+                </div>
+            </div>
+          <div nexus-ui='sequencer' id="drums" class="drum-matrix"></div>
+        </div>
     </div>
     <script>
     //instantiate the socket:
@@ -142,6 +164,16 @@ loop.start();
 
 // ####################################END SOCKETS####################################
 
+var cssId = './css/styles.css';  // you could encode the css path itself to generate id..
+    if (!document.getElementById(cssId))
+    {
+            var head  = document.getElementsByTagName('head')[0];
+            var link  = document.createElement('link');
+            link.href   = cssId;
+            link.rel  = 'stylesheet';
+            head.appendChild(link);
+
+    }
 
 </script>
 <script type ="text/javascript" src="./js/drums.js"></script>
