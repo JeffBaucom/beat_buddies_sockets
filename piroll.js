@@ -63,9 +63,9 @@ $('.grid-column').on('click', function(v) {
     var startTime = Math.floor(div.position().left / 100);
     startTime = "0:" + (startTime -1);
     console.log(startTime, note);
-    piano.triggerAttackRelease(note, "4n", 0);
+    piano.triggerAttackRelease(note, "8n", 0);
     pianoPart.add(startTime, note);
 
 });
 
-Tone.Transport.start();
+//Tone.Transport.start();

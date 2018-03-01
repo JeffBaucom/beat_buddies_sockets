@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <script src="./node_modules/tone/build/Tone.js"></script>
-    <script src="./node_modules/nexusui/dist/NexusUI.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="piStyles.css">
+
 
 
 </head>
@@ -82,7 +81,21 @@
             </div>
           <div nexus-ui='sequencer' id="drums" class="drum-matrix"></div>
         </div>
+        <div class="synth-view">
+            <div nexus-ui="piano" id="piano"></div>
+            <div class="grid-wrapper" id="piRollGrid"></div>
+        </div>
     </div>
+    
+
+
+
+    <script src="./node_modules/tone/build/Tone.js"></script>
+    <script src="./node_modules/nexusui/dist/NexusUI.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type ="text/javascript" src="/socket.io/socket.io.js"></script>    
+    <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js"></script>
+
     <script>
     //instantiate the socket:
 var socket  = io.connect();
@@ -154,6 +167,7 @@ var cssId = './css/styles.css';  // you could encode the css path itself to gene
 <script type ="text/javascript" src="./js/drum_channels.js"></script>
 <script type ="text/javascript" src="./js/channel_strip_sockets.js"></script>
 <script type ="text/javascript" src="./js/transport.js"></script>
+<script src="piroll.js"></script>
 
 
 </body>
