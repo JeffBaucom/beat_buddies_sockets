@@ -1,3 +1,5 @@
+// UI SETUP =====================================
+//-----------------------------------------------
 var pianoDimensions = [500, 125]
 var piano = new Nexus.Piano('#piano', {
     'size': pianoDimensions,
@@ -6,11 +8,9 @@ var piano = new Nexus.Piano('#piano', {
     'highNote': 60
 });
 
-
 $('#piano').css('transform','rotate(-90deg) translate(-37%, -150%');
 console.log($('#piano').width());
 console.log($('#piano').height());
-
 
 $('#piRollGrid').height(499);
 $('#piRollGrid').width(400);
@@ -33,20 +33,39 @@ for (var i = 0; i < (60-24) ; i++) {
 for (var i = 0; i < 4; i++) {
     $('.grid-row').append('<div class="grid-column" id="'+ i + '"></div>');
 }
-
-$('.grid-column').on('click', function(v) { 
-    console.log(v.target.parentElement.id) 
-    var div = $('<div class="draggable"></div>');
-    $(this).append(div)
-        div.draggabilly({axis: 'x', containment: '.grid-row'});
-});
-
-$('.draggable').on('click', function(v) {
-    console.log($(this).parent().id());
-});
+function listener(v) {
+    var draggie = $(this).data('draggabilly');
+    console.log( v.target.offsetLeft, draggie.position.x, draggie.position.y );
+    v.stopPropagation();
+}
 
 var rowHeight = $('.grid-row').height();
 var columnWidth = $('.grid-column').height();
 
+// TONE SETUP ===================================
+//-----------------------------------------------
+
+var piano = new Tone.Synth().toMaster();
+
+var pianoPart = new Tone.Part(function(time, note){
+    piano.triggerAttackRelease(note, "4n", time);
+}).start();
+pianoPart.loop = true;
+pianoPart.loopEnd = "1m";
 
 
+$('.grid-column').on('click', function(v) { 
+    var note = v.target.parentElement.id
+    var div = $('<div class="draggable"></div>');
+    $(this).append(div)
+        div.draggabilly({axis: 'x', containment: '.grid-row'});
+    div.on('pointerDown dragStart dragMove dragEnd staticClick', listener);
+    var startTime = Math.floor(div.position().left / 100);
+    startTime = "0:" + (startTime -1);
+    console.log(startTime, note);
+    piano.triggerAttackRelease(note, "4n", 0);
+    pianoPart.add(startTime, note);
+
+});
+
+Tone.Transport.start();
