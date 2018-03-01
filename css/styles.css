@@ -1,0 +1,103 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+div {
+    color: white;
+    text-color: white;
+    font-color: white;
+}
+
+body {
+
+}
+
+.drums {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+
+}
+
+.presets {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+}
+
+.label {
+  /* display: flex;
+  flex-direction: row;
+  align-items: flex-start; */
+
+}
+
+.drum-matrix{
+margin-left: 100px;
+/* background-color: red; */
+}
+
+#cym-channel div {
+    color: white;
+}
+
+#drum-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#cym-channel-clear {
+}
+
+.label {
+    margin: 0 .75em;
+}
+
+.smButton div {
+    margin: 0 .1em;
+}
+
+.button-row {
+    margin: 1px 0;
+}
+
+#drums {
+    margin-left: 70px;
+}
+
+#drum-selector {
+    margin-right: 50px;
+}
+
+#tempo {
+    margin-right: 40px;
+}
+
+#tempoSlider {
+    margin-right: 1em;
+    margin-top: .5em;
+}
+
+#tempoNumber {
+    height: 40px;
+}
+
+.wrapper {
+    margin-top: 3em;
+}
+
+#play {
+    margin-right: .5em;
+    height: 40px;
+}
+
+#stop {
+    height: 40px;
+    color: white;
+}
+
+#transport {
+    margin-bottom: .75em;
+}
