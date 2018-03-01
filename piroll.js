@@ -12,7 +12,7 @@ console.log($('#piano').width());
 console.log($('#piano').height());
 
 
-$('#piRollGrid').height(500);
+$('#piRollGrid').height(499);
 $('#piRollGrid').width(400);
 $('#piRollGrid').css('transform', 'translate(125px, -125px)');
 //Build rows
@@ -32,21 +32,15 @@ for (var i = 0; i < 4; i++) {
     $('.grid-row').append('<div class="grid-column" id="'+ i + '"></div>');
 }
 
-$('.grid-row').on('click', function(v) { 
-    console.log(v.target.id) 
+$('.grid-column').on('click', function(v) { 
+    console.log(v.target.parentElement.id) 
+    var div = $('<div class="draggable"></div>');
+    $(this).append(div)
+        div.draggabilly({axis: 'x', containment: '.grid-row'});
 });
 
 var rowHeight = $('.grid-row').height();
 var columnWidth = $('.grid-column').height();
 
-var $draggables = $('.draggable').draggabilly({
-    // contain to parent elemet
-   // containment: true,
-    grid: [columnWidth, rowHeight],
-    axis: 'x'
-  }).height(rowHeight).width(columnWidth);
-$draggables.on( 'dragMove', function( event, pointer, moveVector ) {
-    console.log(moveVector);
-});
 
 
