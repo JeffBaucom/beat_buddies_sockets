@@ -1,0 +1,40 @@
+.grid-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: -3px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #888;
+}
+
+.grid-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    box-sizing: border-box;
+    border-top: 1px solid #888;
+    font-size: 0.3em;
+}
+.white-row {
+    background-color: #ccc;
+
+}
+
+.black-row {
+    background-color: #aaa;
+}
+
+.grid-column {
+    box-sizing: border-box;
+    border-right: 1px solid #888;
+    width: 100%;
+    height: 100%;
+}
+
+
+.draggable {
+    box-sizing: border-box;
+    border-right: 1px solid #300;
+    border-left: 1px solid #300;
+}

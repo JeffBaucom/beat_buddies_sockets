@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="piStyles.css">
+</head>
+<body>
+    <div nexus-ui="piano" id="piano"></div>
+    <div class="grid-wrapper" id="piRollGrid">
+
+    </div>
+    <div class="draggable"></div>
+    <div class="draggable"></div>
+    <div class="draggable"></div>
+    <!--canvas id="piRollCanvas">
+    <svg id="rollGrid" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+          <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5"/>
+        </pattern>
+        <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+          <rect width="80" height="80" fill="url(#smallGrid)"/>
+          <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1"/>
+        </pattern>
+      </defs>
+
+      <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+
+    </canvas-->
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./node_modules/tone/build/Tone.js"></script>
+    <script src="./node_modules/nexusui/dist/NexusUI.js"></script>
+    <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js"></script>
+
+    <script src="piroll.js"></script>
+</body>
+</html>
