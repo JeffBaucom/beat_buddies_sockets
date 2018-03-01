@@ -18,16 +18,18 @@ $('#piRollGrid').css('transform', 'translate(125px, -125px)');
 //Build rows
 var keys = [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0];
 var notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
+var startingOctave = 3;
 for (var i = 0; i < (60-24) ; i++) {
     if (keys[i % keys.length]) {
-        div = '<div class="black-row grid-row" id="'+ i + '"></div>'
+        div = '<div class="black-row grid-row" id="'+ notes[i % 12] + (startingOctave + Math.floor(i /12)) +  '"></div>'
         $('#piRollGrid').prepend(div)
     }  else {
-        div = '<div class="white-row grid-row" id="'+ i + '"></div>'
+        div = '<div class="white-row grid-row" id="'+ notes[i % 12] + (startingOctave + Math.floor(i /12))  + '"></div>'
         $('#piRollGrid').prepend(div)
     }
 }
 
+//Build Grid Columns
 for (var i = 0; i < 4; i++) {
     $('.grid-row').append('<div class="grid-column" id="'+ i + '"></div>');
 }
@@ -37,6 +39,10 @@ $('.grid-column').on('click', function(v) {
     var div = $('<div class="draggable"></div>');
     $(this).append(div)
         div.draggabilly({axis: 'x', containment: '.grid-row'});
+});
+
+$('.draggable').on('click', function(v) {
+    console.log($(this).parent().id());
 });
 
 var rowHeight = $('.grid-row').height();
