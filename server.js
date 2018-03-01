@@ -93,6 +93,11 @@ socket.on("changeDrums", function(value) {
   socket.broadcast.emit("changeDrums", value);
 });
 
+//GLOBAL SOLO CLEAR
+socket.on("solo_clear", function() {
+  socket.broadcast.emit("solo_clear");
+})
+
 
 //TRANSPORT
 socket.on("tempo_changed", function(data) {

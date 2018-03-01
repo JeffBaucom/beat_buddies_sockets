@@ -104,3 +104,28 @@ socket.on('kickSolo', function(toggle) {
   kickSoloButton.state = toggle;
   }
 })
+
+
+// GLOBAL SOLO CLEAR
+
+function globalSoloClear() {
+  kickSoloButton.state = false;
+  snareSoloButton.state = false;
+  hhSoloButton.state = false;
+  tom1SoloButton.state = false;
+  tom2SoloButton.state = false;
+  perc1SoloButton.state = false;
+  perc2SoloButton.state = false;
+  cymSoloButton.state = false;
+}
+
+$(document).keypress(function(e) {
+  if (e.charCode == 122) {
+    globalSoloClear();
+    socket.emit("solo_clear");
+  }
+})
+
+socket.on("solo_clear", function() {
+  globalSoloClear();
+})

@@ -195,6 +195,8 @@ $('#drums').children().click(function(v) {
 // IDEA: to enable dragging, send entire pattern on drag-end or mouseup
 
 
+
+
 //receive the broadcast and toggle the cell
 socket.on('add_note', function(data) {
   // console.log("received from the server");
