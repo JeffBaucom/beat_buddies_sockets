@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Latin Kit</title>
+  </head>
+  <body>
+
+<script>
+
+var loop = new Tone.Sequence(function(time, row) {
+    for (var i = 0; i < 5; i++) {
+        if (sequencer.matrix.pattern[i][row] == 1) {
+            //console.log(notes[i]);
+            synth.triggerAttackRelease(notes[i], '64n');
+        }
+    }
+
+    for (var j = 0; j < 8; j++) {
+        //console.log(drums.matrix.pattern[j][row]);
+        if (drums.matrix.pattern[j][row] == 1) {
+            //console.log(notes[i]);
+            kitSounds.get(kit[j]).start(time, 0, '1n', 0, 0.5);
+        }
+    }
+
+
+}
+, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], '16n');
+
+// Declare slider and attach to div id
+var tempoSlider = new Nexus.Slider('#tempoSlider', {
+    'size': [240, 20],
+    'min': 1,
+    'max': 250,
+    'mode': 'absolute',
+    'step': 1,
+    'value': 110
+});
+    //initialize tempo at current value
+    Tone.Transport.bpm.value = tempoSlider.value;
+
+    var tempoNumber = new Nexus.Number('#tempoNumber');
+
+    tempoNumber.link(tempoSlider);
+
+    var play = new Nexus.TextButton('#play', {
+        'text': 'Play'
+    });
+    var stop = new Nexus.TextButton('#stop', {
+        'text': 'Stop'
+    });
+
+
+    Tone.Transport.start();
+    loop.start();
+
+    </script>
+    <script type ="text/javascript" src="./js/latin/latin.js"></script>
+    <script type ="text/javascript" src="./js/latin/drum_channels.js"></script>
+    <script type ="text/javascript" src="./js/latin/channel_strip_sockets.js"></script>
+  </body>
+</html>
