@@ -48,23 +48,34 @@ function listener(v) {
 }
 
 var halfButton = new Nexus.TextButton('#2n', {
-    'size': [200, 50],
+    'size': [150, 40],
     'text': '1/2',
     'state': false,
     'alternateText': '1/2'
 });
 var quarterButton = new Nexus.TextButton('#4n', {
-    'size': [200, 50],
+    'size': [150, 40],
     'text': '1/4',
     'state': true,
     'alternateText': '1/4'
 });
 var eighthButton = new Nexus.TextButton('#8n', {
-    'size': [200, 50],
+    'size': [150, 40],
     'text': '1/8',
     'state': false,
     'alternateText': '1/8'
 });
+
+// Button Colorize
+
+halfButton.colorize("fill", "#364250")
+halfButton.colorize("accent", "#8ADBED")
+
+quarterButton.colorize("fill", "#364250")
+quarterButton.colorize("accent", "#8ADBED")
+
+eighthButton.colorize("fill", "#364250")
+eighthButton.colorize("accent", "#8ADBED")
 
 halfButton.on('change', function(v) {
     if (v) {
