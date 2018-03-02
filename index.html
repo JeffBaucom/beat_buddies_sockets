@@ -14,6 +14,10 @@
 
 </head>
 <body>
+    <div class="header">
+        <img src="./assets/headphones.svg" alt="Beat Buddies Icon" class = "bb-icon">
+        <h4 class="bb-title">BEATBUDDIES</h4>
+    </div>
     <div id="content"></div>
       <div class="wrapper">
         <div id="transport" class = "d-flex flex-row justify-content-center">
@@ -83,16 +87,16 @@
             </div>
           <div nexus-ui='sequencer' id="drums" class="drum-matrix"></div>
         </div>
-        <div class="synth-view">
-            <div id="noteLengths" class="button-row d-flex flex-row">
-                <div id="2n"></div>
-                <div id="4n"></div>
-                <div id="8n"></div>
-                <div id="pianoClear"></div>
-            </div>
-            <div class="piano-align">
+        <div class="synth-background">
+            <div class="synth-view">
+                <div id="noteLengths" class="button-row d-flex flex-row">
+                    <div id="2n"></div>
+                    <div id="4n"></div>
+                    <div id="8n"></div>
+                </div>
                 <div nexus-ui="piano" id="piano"></div>
                 <div class="grid-wrapper" id="piRollGrid"></div>
+                <div id="pianoClear"></div>
             </div>
         </div>
     </div>
