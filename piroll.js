@@ -67,7 +67,7 @@ var eighthButton = new Nexus.TextButton('#8n', {
 });
 
 var pianoClear = new Nexus.TextButton('#pianoClear', {
-    'size': [200, 50],
+    'size': [200, 40],
     'text': 'Clear',
     'state': false,
 });
@@ -82,6 +82,9 @@ quarterButton.colorize("accent", "#8ADBED")
 
 eighthButton.colorize("fill", "#364250")
 eighthButton.colorize("accent", "#8ADBED")
+
+pianoClear.colorize("fill", "#364250")
+pianoClear.colorize("accent", "#8ADBED")
 
 halfButton.on('change', function(v) {
     if (v) {

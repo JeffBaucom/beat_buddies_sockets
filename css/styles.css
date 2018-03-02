@@ -7,6 +7,11 @@ body {
     background-color: #262F39;
 }
 
+h4 {
+    font-weight: 300;
+    letter-spacing: .08em;
+}
+
 .fa-play {
     margin-top: -.34em;
     color: #6a7786;
@@ -82,6 +87,10 @@ margin-left: 100px;
     margin-left: 70px;
 }
 
+#drums div span svg {
+    border-radius: 10px;
+}
+
 #drum-selector {
     margin-right: 60px;
 }
@@ -98,6 +107,10 @@ margin-left: 100px;
 #tempoNumber {
     height: 40px;
     color: white;
+}
+
+#tempoNumber input {
+    border-radius: 10px;
 }
 
 .wrapper {
@@ -147,3 +160,26 @@ margin-left: 100px;
     border-radius: 10px;
 }
 
+.bb-title {
+    color: white;
+    margin: 1em 0 0 .6em;
+}
+
+.header {
+    padding-bottom: 1.8em;
+    padding-top: 1px;
+    background-color: #364250;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#cym-label div {
+    border-radius: 8px;
+}
+
+.bb-icon {
+    height: 28px;
+    width: 28px;
+    margin: 1.4em 0 0 1.5em;
+}
