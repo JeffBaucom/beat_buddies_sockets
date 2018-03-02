@@ -66,6 +66,12 @@ var eighthButton = new Nexus.TextButton('#8n', {
     'alternateText': '1/8'
 });
 
+var pianoClear = new Nexus.TextButton('#pianoClear', {
+    'size': [200, 50],
+    'text': 'Clear',
+    'state': false,
+});
+
 halfButton.on('change', function(v) {
     if (v) {
         eighthButton.turnOff();
@@ -86,7 +92,7 @@ eighthButton.on('change', function(v) {
         $('.grid-row').empty();
         buildColumns(2);
         //$('.grid-column').replaceWith(draggies);
-        
+
     }
 });
 
@@ -100,6 +106,15 @@ quarterButton.on('change', function(v) {
         buildColumns(1);
     }
 });
+
+//clear button actions
+pianoClear.on('change', function(v) {
+  if (v) {
+    pianoPart.removeAll();
+    $('.draggable').remove();
+  }
+})
+
 var noteLength = "4n"
 var noteSize = 50;
 
@@ -120,7 +135,7 @@ pianoPart.loopEnd = "2m";
 
 //Handle placing new notes
 //TODO Fix the event propagation issue - possible solution with listening to different event besides click
-$('.grid-row').on('click','.grid-column', function(v) { 
+$('.grid-row').on('click','.grid-column', function(v) {
     var note = v.target.parentElement.id
     var div = $('<div class="draggable"></div>');
     $(this).append(div)
@@ -144,5 +159,8 @@ $('.grid-row').on('click','.grid-column', function(v) {
     pianoPart.add({time: startTime, note: note, length: noteLength});
 
 });
+
+
+
 
 //Tone.Transport.start();
