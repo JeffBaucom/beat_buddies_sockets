@@ -45,11 +45,14 @@
 }
 
 .synth-view {
-    padding-left: 25%;
+    width: 523px;
+    height: 600px;
+    margin: 0 auto;
 }
 
 #noteLengths {
-    margin-left: 50px;
+    width: 450px;
+    margin: 0 auto;
 }
 
 #piRollGrid {
@@ -58,4 +61,21 @@
 
 #noteLengths div {
     color: white !important;
+}
+
+#pianoClear {
+    margin: 0 auto;
+    margin-top: -118px;
+}
+
+#pianoClear div div {
+    color: white !important;
+    padding-bottom: 2.25em !important;
+}
+
+.synth-background {
+    width: 864px;
+    margin: 0 auto;
+    background-color: #4E5B6A;
+    padding: 1em 0;
 }
