@@ -99,6 +99,12 @@ socket.on("solo_clear", function() {
 })
 
 
+//GLOBAL MUTE clear
+socket.on("mute_clear", function() {
+  socket.broadcast.emit("mute_clear");
+
+})
+
 //TRANSPORT
 // socket.on("tempo_changed", function(data) {
 // //    console.log("tempo changed:", data);

@@ -77,9 +77,7 @@ socket.on('tom1Solo', function(toggle) {
 socket.on('tom2Solo', function(toggle) {
   if (toggle != tom2Solo.solo) {
   tom2Solo.solo = toggle;
-
   tom2SoloButton.state = toggle;
-
   }
 })
 
@@ -100,8 +98,6 @@ socket.on('snareSolo', function(toggle) {
 })
 
 socket.on('kickSolo', function(toggle) {
-  console.log("toggle", toggle);
-  console.log("buttonState:", SoloButton.state)
   if (toggle != kickSolo.solo) {
   kickSolo.solo = toggle;
   kickSoloButton.state = toggle;
@@ -131,4 +127,29 @@ $(document).keypress(function(e) {
 
 socket.on("solo_clear", function() {
   globalSoloClear();
+})
+
+
+//GLOBAL MUTE CLEAR
+
+function globalMuteClear() {
+  kickMuteButton.state = false;
+  snareMuteButton.state = false;
+  hhMuteButton.state = false;
+  tom1MuteButton.state = false;
+  tom2MuteButton.state = false;
+  perc1MuteButton.state = false;
+  perc2MuteButton.state = false;
+  cymMuteButton.state = false;
+}
+
+$(document).keypress(function(e) {
+  if (e.charCode == 109) {
+    globalMuteClear();
+    socket.emit("mute_clear");
+  }
+})
+
+socket.on("mute_clear", function() {
+  globalMuteClear();
 })
