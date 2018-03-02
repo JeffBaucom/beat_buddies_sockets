@@ -48,25 +48,25 @@ function listener(v) {
 }
 
 var halfButton = new Nexus.TextButton('#2n', {
-    'size': [150, 40],
+    'size': [120, 40],
     'text': '1/2',
     'state': false,
     'alternateText': '1/2'
 });
 var quarterButton = new Nexus.TextButton('#4n', {
-    'size': [150, 40],
+    'size': [120, 40],
     'text': '1/4',
     'state': true,
     'alternateText': '1/4'
 });
 var eighthButton = new Nexus.TextButton('#8n', {
-    'size': [150, 40],
+    'size': [120, 40],
     'text': '1/8',
     'state': false,
     'alternateText': '1/8'
 });
 var sixteenthButton = new Nexus.TextButton('#16n', {
-    'size': [150, 40],
+    'size': [120, 40],
     'text': '1/16',
     'state': false,
     'alternateText': '1/16'
@@ -210,6 +210,9 @@ var pianoSlider = new Nexus.Slider('#pianoVolume', {
     'step': 1,
     'value': -15
 });
+
+pianoSlider.colorize("accent", "#8ADBED")
+pianoSlider.colorize("fill", "#364250")
 
 //link slider to Volume
 pianoSlider.on('change', function(v) {
