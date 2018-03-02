@@ -71,7 +71,11 @@
 
 #pianoVolume {
     margin: 0 auto;
-    margin-top: -104px;
+    margin-top: -112px;
+}
+
+#pianoVolume p {
+    padding-left: 5px;
 }
 
 #pianoClear div div {
