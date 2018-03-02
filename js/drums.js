@@ -13,7 +13,7 @@ var drums = new Nexus.Sequencer("#drums", {
 drums.colorize('fill', '#364250');
 drums.colorize("accent","#8ADBED")
 
-var kit = ['cym','perc2', 'perc1', 'tom2', 'tom1','hh','snare','kick' ]
+var kit = ['cym','perc1', 'perc2', 'tom2', 'tom1','hh','snare','kick' ]
 
 
 var kitSounds = new Tone.Players({
@@ -133,11 +133,11 @@ tom2Label.on('change', function(v) {
   }
 })
 
-var perc1Label = new Nexus.TextButton ('#perc1-label', { //create the perc1 button ui
+var perc1Label = new Nexus.TextButton ('#perc2-label', { //create the perc1 button ui
   'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
-'text': '<div class="white-text">perc 1</div>'
+'text': '<div class="white-text">perc 2</div>'
 })
 
 perc1Label.on('change', function(v) {
@@ -146,11 +146,11 @@ perc1Label.on('change', function(v) {
   }
 })
 
-var perc2Label = new Nexus.TextButton ('#perc2-label', { //create the perc2 button ui
+var perc2Label = new Nexus.TextButton ('#perc1-label', { //create the perc2 button ui
   'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
-'text': '<div class="white-text">perc 2</div>'
+'text': '<div class="white-text">perc 1</div>'
 })
 
 perc2Label.on('change', function(v) {
