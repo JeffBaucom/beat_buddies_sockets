@@ -19,8 +19,8 @@ var kit = ['cym','perc2', 'perc1', 'tom2', 'tom1','hh','snare','kick' ]
 
 var kitSounds = new Tone.Players({
   "cym" : "./sounds/electric/crash.wav",
-  "perc1" : "./sounds/electric/clap.WAV",
-  "perc2" : "./sounds/electric/cowbell.wav",
+  "perc1" : "./sounds/electric/cowbell.wav",
+  "perc2" : "./sounds/electric/clap.WAV",
   "tom1" : "./sounds/electric/hightom.wav",
   "tom2" : "./sounds/electric/floortom.wav",
   "hh" : "./sounds/electric/hh.wav",
@@ -280,4 +280,3 @@ snareLabel.colorize("accent", "#6DCADE")
 
 kickLabel.colorize("fill", "#4D5B6A")
 kickLabel.colorize("accent", "#6DCADE")
-
