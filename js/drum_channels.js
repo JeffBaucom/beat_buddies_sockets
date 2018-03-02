@@ -1,3 +1,6 @@
+//set a global variable for mute status
+// var mute_status;
+// var solo_status
 // kick channel:
 
 var kickSolo = new Tone.Solo(); //add a solo button
@@ -411,4 +414,3 @@ snareClear.colorize("accent", "#6DCADE")
 
 kickClear.colorize("fill", "#364250")
 kickClear.colorize("accent", "#6DCADE")
-
