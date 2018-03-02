@@ -76,7 +76,7 @@ var kickLabel = new Nexus.TextButton ('#kick-label', { //create the kick button 
   'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
-'text': 'kick'
+'text': '<div class="white-text">kick</div>'
 })
 
 kickLabel.on('change', function(v) {
@@ -89,7 +89,7 @@ var snareLabel = new Nexus.TextButton ('#snare-label', { //create the snare butt
   'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
-'text': 'snare'
+'text': '<div class="white-text">snare</div>'
 })
 
 snareLabel.on('change', function(v) {
@@ -102,7 +102,7 @@ var hhLabel = new Nexus.TextButton ('#hh-label', { //create the hh button ui
   'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
-'text': 'hh'
+'text': '<div class="white-text">hh</div>'
 })
 
 hhLabel.on('change', function(v) {
@@ -115,7 +115,7 @@ var tom1Label = new Nexus.TextButton ('#tom1-label', { //create the tom1 button 
   'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
-'text': 'tom1'
+'text': '<div class="white-text">tom 1</div>'
 })
 
 tom1Label.on('change', function(v) {
@@ -129,7 +129,7 @@ var tom2Label = new Nexus.TextButton ('#tom2-label', { //create the tom2 button 
   'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
-'text': 'tom2'
+'text': '<div class="white-text">tom 2</div>'
 })
 
 tom2Label.on('change', function(v) {
@@ -142,7 +142,7 @@ var perc1Label = new Nexus.TextButton ('#perc1-label', { //create the perc1 butt
   'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
-'text': 'perc1'
+'text': '<div class="white-text">perc 1</div>'
 })
 
 perc1Label.on('change', function(v) {
@@ -155,7 +155,7 @@ var perc2Label = new Nexus.TextButton ('#perc2-label', { //create the perc2 butt
   'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
-'text': 'perc2'
+'text': '<div class="white-text">perc 2</div>'
 })
 
 perc2Label.on('change', function(v) {
@@ -168,7 +168,7 @@ var cymLabel = new Nexus.TextButton ('#cym-label', { //create the cym button ui
   'size': [100,35.5],
 'mode': 'aftertouch',
 'state': false,
-'text': 'cym'
+'text': '<div class="white-text">cym</div>'
 })
 
 cymLabel.on('change', function(v) {
@@ -182,6 +182,9 @@ var drumPresets = new Nexus.Select('#drum-selector',{ //instrument selector UI
   'size': [150,35.5],
   'options': ['Electric','Acoustic']
 })
+
+drumPresets.colorize("fill", "#364250")
+drumPresets.colorize("accent")
 
 drumPresets.on('change', function(v) { //selector
   socket.emit("changeDrums", v.value)
@@ -252,3 +255,29 @@ socket.on("changeDrums", function(kit) {
 })
 
 //RECEIVERS
+
+//Labels.Colorize
+cymLabel.colorize("fill", "#4D5B6A")
+cymLabel.colorize("accent", "#6DCADE")
+
+perc1Label.colorize("fill", "#4D5B6A")
+perc1Label.colorize("accent", "#6DCADE")
+
+perc2Label.colorize("fill", "#4D5B6A")
+perc2Label.colorize("accent", "#6DCADE")
+
+tom1Label.colorize("fill", "#4D5B6A")
+tom1Label.colorize("accent", "#6DCADE")
+
+tom2Label.colorize("fill", "#4D5B6A")
+tom2Label.colorize("accent", "#6DCADE")
+
+hhLabel.colorize("fill", "#4D5B6A")
+hhLabel.colorize("accent", "#6DCADE")
+
+snareLabel.colorize("fill", "#4D5B6A")
+snareLabel.colorize("accent", "#6DCADE")
+
+kickLabel.colorize("fill", "#4D5B6A")
+kickLabel.colorize("accent", "#6DCADE")
+

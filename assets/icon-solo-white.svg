@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-solo-white</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-95.000000, -187.000000)">
+        <g id="Group-4-Copy-11" transform="translate(96.000000, 186.000000)" fill="#FFFFFF">
+            <g id="Group-284" transform="translate(6.000000, 1.000000)">
+                <path d="M5.5005,0 C2.6365,0 0.2795,2.201 0.0255,5 L10.9755,5 C10.7215,2.201 8.3645,0 5.5005,0" id="Fill-237"></path>
+                <path d="M5,13.5 C5,13.224 5.224,13 5.5,13 C5.776,13 6,13.224 6,13.5 L6,15.5 C6,15.776 5.776,16 5.5,16 C5.224,16 5,15.776 5,15.5 L5,13.5 Z M2.523,10.118 L3.371,20.037 C3.453,20.979 4.122,21.72 5,21.933 L5,23.5 C5,23.776 5.224,24 5.5,24 C5.776,24 6,23.776 6,23.5 L6,21.938 C6.877,21.735 7.545,20.999 7.627,20.061 L8.478,10.118 C9.861,9.223 10.819,7.727 10.975,6 L0.026,6 C0.183,7.727 1.14,9.223 2.523,10.118 L2.523,10.118 Z" id="Fill-238"></path>
+            </g>
+        </g>
+    </g>
+</svg>
