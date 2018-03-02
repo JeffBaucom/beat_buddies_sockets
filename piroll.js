@@ -65,6 +65,12 @@ var eighthButton = new Nexus.TextButton('#8n', {
     'state': false,
     'alternateText': '1/8'
 });
+var sixteenthButton = new Nexus.TextButton('#16n', {
+    'size': [150, 40],
+    'text': '1/16',
+    'state': false,
+    'alternateText': '1/16'
+});
 
 var pianoClear = new Nexus.TextButton('#pianoClear', {
     'size': [200, 40],
@@ -83,6 +89,9 @@ quarterButton.colorize("accent", "#8ADBED")
 eighthButton.colorize("fill", "#364250")
 eighthButton.colorize("accent", "#8ADBED")
 
+sixteenthButton.colorize("fill", "#364250")
+sixteenthButton.colorize("accent", "#8ADBED")
+
 pianoClear.colorize("fill", "#364250")
 pianoClear.colorize("accent", "#8ADBED")
 
@@ -90,6 +99,8 @@ halfButton.on('change', function(v) {
     if (v) {
         eighthButton.turnOff();
         quarterButton.turnOff();
+        sixteenthButton.turnOff();
+        noteSize = 100;
         noteLength = "2n"
         $('.grid-row').empty();
         buildColumns(0.5);
@@ -100,6 +111,7 @@ eighthButton.on('change', function(v) {
     if (v) {
         halfButton.turnOff();
         quarterButton.turnOff();
+        sixteenthButton.turnOff();
         noteLength = "8n"
         var draggies = $('.grid-column').contents();
         noteSize = 25;
@@ -110,10 +122,26 @@ eighthButton.on('change', function(v) {
     }
 });
 
+sixteenthButton.on('change', function(v) {
+    if (v) {
+        halfButton.turnOff();
+        quarterButton.turnOff();
+        eighthButton.turnOff();
+        noteLength = "16n"
+        var draggies = $('.grid-column').contents();
+        noteSize = 25/2;
+        $('.grid-row').empty();
+        buildColumns(4);
+        //$('.grid-column').replaceWith(draggies);
+
+    }
+});
+
 quarterButton.on('change', function(v) {
     if (v) {
         eighthButton.turnOff();
         halfButton.turnOff();
+        sixteenthButton.turnOff();
         noteLength = "4n"
         noteSize = 50;
         $('.grid-row').empty();
@@ -176,6 +204,7 @@ pianoPart.loopEnd = "2m";
 //Handle placing new notes
 //TODO Fix the event propagation issue - possible solution with listening to different event besides click
 $('.grid-row').on('click','.grid-column', function(v) {
+    console.log(v.target.offsetLeft);
     var note = v.target.parentElement.id
     var div = $('<div class="draggable"></div>');
     $(this).append(div)
@@ -184,16 +213,26 @@ $('.grid-row').on('click','.grid-column', function(v) {
     console.log(div.position());
 
     //TODO Make resizable
-    console.log(div.position().left - 125);
+    //var margin = parseInt($('.synth-view').css('marginLeft'));
+    //console.log('div position', div.position().left - 125 - margin);
     if ( noteLength === "4n") {
-        var startTime = Math.floor((div.position().left) / 50);
-        startTime = "0:" + (startTime -8);
+        var startTime = Math.floor((v.target.offsetLeft) / 50);
+        startTime = "0:" + (startTime);
 
     } else if (noteLength === "8n") {
-        var startTime = Math.floor((div.position().left) / 25);
-        startTime = "0:0:" + ((startTime -17));
+        var startTime = Math.floor((v.target.offsetLeft) / 25);
+        startTime = "0:0:" + ((startTime)*2);
 
+    } else if (noteLength === "16n") {
+        var startTime = Math.floor((v.target.offsetLeft) / 12);
+        startTime = startTime > 22 ? startTime -1 : startTime;
+        startTime = "0:0:" + startTime;
+
+    } else if (noteLength === "2n") {
+        var startTime = Math.floor((v.target.offsetLeft) / 100);
+        startTime = "0:" + ((startTime));
     }
+
     console.log(startTime, note);
     piano.triggerAttackRelease(note, "8n", 0);
     pianoPart.add({time: startTime, note: note, length: noteLength});
