@@ -174,7 +174,30 @@ margin-left: 100px;
     justify-content: flex-start;
 }
 
-#cym-label div {
+#cym-label div,
+#perc1-label div,
+#perc2-label div,
+#tom1-label div,
+#tom2-label div,
+#hh-label div,
+#snare-label div,
+#kick-label div, 
+#cym-channel div, 
+#cym-channel-clear div, 
+#perc1-channel div, 
+#perc1-channel-clear div, 
+#perc2-channel div, 
+#perc2-channel-clear div, 
+#tom1-channel div, 
+#tom1-channel-clear div, 
+#tom2-channel div, 
+#tom2-channel-clear div, 
+#hh-channel div, 
+#hh-channel-clear div, 
+#snare-channel div, 
+#snare-channel-clear div, 
+#kick-channel div,
+#kick-channel-clear div {
     border-radius: 8px;
 }
 
