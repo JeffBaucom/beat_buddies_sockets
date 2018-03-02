@@ -71,6 +71,8 @@ halfButton.on('change', function(v) {
         eighthButton.turnOff();
         quarterButton.turnOff();
         noteLength = "2n"
+        $('.grid-row').empty();
+        buildColumns(0.5);
     }
 });
 
@@ -80,6 +82,9 @@ eighthButton.on('change', function(v) {
         quarterButton.turnOff();
         noteLength = "8n"
         var draggies = $('.grid-column').contents();
+        noteSize = 25;
+        $('.grid-row').empty();
+        buildColumns(2);
         //$('.grid-column').replaceWith(draggies);
         
     }
@@ -90,9 +95,13 @@ quarterButton.on('change', function(v) {
         eighthButton.turnOff();
         halfButton.turnOff();
         noteLength = "4n"
+        noteSize = 50;
+        $('.grid-row').empty();
+        buildColumns(1);
     }
 });
 var noteLength = "4n"
+var noteSize = 50;
 
 var rowHeight = $('.grid-row').height();
 var columnWidth = $('.grid-column').height();
@@ -111,17 +120,25 @@ pianoPart.loopEnd = "2m";
 
 //Handle placing new notes
 //TODO Fix the event propagation issue - possible solution with listening to different event besides click
-$('.grid-column').on('click', function(v) { 
+$('.grid-row').on('click','.grid-column', function(v) { 
     var note = v.target.parentElement.id
     var div = $('<div class="draggable"></div>');
     $(this).append(div)
         div.draggabilly({axis: 'x', containment: '.grid-row'});
     div.on('pointerDown dragStart dragMove dragEnd staticClick', listener);
     console.log(div.position());
+
     //TODO Make resizable
     console.log(div.position().left - 125);
-    var startTime = Math.floor((div.position().left) / 50);
-    startTime = "0:" + (startTime -2);
+    if ( noteLength === "4n") {
+        var startTime = Math.floor((div.position().left) / 50);
+        startTime = "0:" + (startTime -2);
+
+    } else if (noteLength === "8n") {
+        var startTime = Math.floor((div.position().left) / 25);
+        startTime = "0:0:" + ((startTime -5)*2);
+
+    }
     console.log(startTime, note);
     piano.triggerAttackRelease(note, "8n", 0);
     pianoPart.add({time: startTime, note: note, length: noteLength});
