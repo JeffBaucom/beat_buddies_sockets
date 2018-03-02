@@ -188,7 +188,7 @@ $('.grid-row').on('click','.grid-column', function(v) {
 
     } else if (noteLength === "8n") {
         var startTime = Math.floor((div.position().left) / 25);
-        startTime = "0:0:" + ((startTime -17));
+        startTime = "0:0:" + ((startTime -17)*2);
 
     }
     console.log(startTime, note);
