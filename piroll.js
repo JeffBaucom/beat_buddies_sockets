@@ -66,6 +66,12 @@ var eighthButton = new Nexus.TextButton('#8n', {
     'alternateText': '1/8'
 });
 
+var pianoClear = new Nexus.TextButton('#pianoClear', {
+    'size': [200, 50],
+    'text': 'Clear',
+    'state': false,
+});
+
 // Button Colorize
 
 halfButton.colorize("fill", "#364250")
@@ -97,7 +103,7 @@ eighthButton.on('change', function(v) {
         $('.grid-row').empty();
         buildColumns(2);
         //$('.grid-column').replaceWith(draggies);
-        
+
     }
 });
 
@@ -111,6 +117,15 @@ quarterButton.on('change', function(v) {
         buildColumns(1);
     }
 });
+
+//clear button actions
+pianoClear.on('change', function(v) {
+  if (v) {
+    pianoPart.removeAll();
+    $('.draggable').remove();
+  }
+})
+
 var noteLength = "4n"
 var noteSize = 50;
 
@@ -120,7 +135,33 @@ var columnWidth = $('.grid-column').height();
 // TONE SETUP ===================================
 //-----------------------------------------------
 
-var piano = new Tone.Synth().toMaster();
+var piano = new Tone.MonoSynth({
+    "oscillator": {
+        "type": "fmsquare5",
+		"modulationType" : "triangle",
+      	"modulationIndex" : 2,
+      	"harmonicity" : 0.501
+    },
+    "filter": {
+        "Q": 1,
+        "type": "lowpass",
+        "rolloff": -24
+    },
+    "envelope": {
+        "attack": 0.01,
+        "decay": 0.1,
+        "sustain": 0.4,
+        "release": 2
+    },
+    "filterEnvelope": {
+        "attack": 0.01,
+        "decay": 0.1,
+        "sustain": 0.8,
+        "release": 1.5,
+        "baseFrequency": 50,
+        "octaves": 4.4
+    }
+}).toMaster();
 
 var pianoPart = new Tone.Part(function(time, value){
     piano.triggerAttackRelease(value.note, value.length, time);
@@ -131,7 +172,7 @@ pianoPart.loopEnd = "2m";
 
 //Handle placing new notes
 //TODO Fix the event propagation issue - possible solution with listening to different event besides click
-$('.grid-row').on('click','.grid-column', function(v) { 
+$('.grid-row').on('click','.grid-column', function(v) {
     var note = v.target.parentElement.id
     var div = $('<div class="draggable"></div>');
     $(this).append(div)
@@ -143,11 +184,11 @@ $('.grid-row').on('click','.grid-column', function(v) {
     console.log(div.position().left - 125);
     if ( noteLength === "4n") {
         var startTime = Math.floor((div.position().left) / 50);
-        startTime = "0:" + (startTime -2);
+        startTime = "0:" + (startTime -8);
 
     } else if (noteLength === "8n") {
         var startTime = Math.floor((div.position().left) / 25);
-        startTime = "0:0:" + ((startTime -5)*2);
+        startTime = "0:0:" + ((startTime -17));
 
     }
     console.log(startTime, note);
@@ -155,5 +196,8 @@ $('.grid-row').on('click','.grid-column', function(v) {
     pianoPart.add({time: startTime, note: note, length: noteLength});
 
 });
+
+
+
 
 //Tone.Transport.start();
