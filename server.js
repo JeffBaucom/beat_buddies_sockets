@@ -100,19 +100,19 @@ socket.on("solo_clear", function() {
 
 
 //TRANSPORT
-socket.on("tempo_changed", function(data) {
-//    console.log("tempo changed:", data);
-    socket.broadcast.emit('change_tempo', data);
-});
-
-socket.on("transport_play", function(data) {
-//    console.log("tempo changed:", data);
-    socket.broadcast.emit('transport_play', data);
-});
-
-socket.on("transport_stop", function(data) {
-//    console.log("tempo changed:", data);
-    socket.broadcast.emit('transport_stop', data);
-});
+// socket.on("tempo_changed", function(data) {
+// //    console.log("tempo changed:", data);
+//     socket.broadcast.emit('change_tempo', data);
+// });
+//
+// socket.on("transport_play", function(data) {
+// //    console.log("tempo changed:", data);
+//     socket.broadcast.emit('transport_play', data);
+// });
+//
+// socket.on("transport_stop", function(data) {
+// //    console.log("tempo changed:", data);
+//     socket.broadcast.emit('transport_stop', data);
+// });
 
 })
