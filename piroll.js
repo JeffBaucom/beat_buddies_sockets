@@ -78,6 +78,7 @@ var pianoClear = new Nexus.TextButton('#pianoClear', {
     'state': false,
 });
 
+
 // Button Colorize
 
 halfButton.colorize("fill", "#364250")
@@ -199,6 +200,23 @@ var pianoPart = new Tone.Part(function(time, value){
 }).start();
 pianoPart.loop = true;
 pianoPart.loopEnd = "2m";
+
+//create volume slider UI
+var pianoSlider = new Nexus.Slider('#pianoVolume', {
+    'size': [240, 15],
+    'min': -60,
+    'max': 10,
+    'mode': 'absolute',
+    'step': 1,
+    'value': -15
+});
+
+//link slider to Volume
+pianoSlider.on('change', function(v) {
+  piano.volume.value = v;
+})
+
+
 
 
 //Handle placing new notes
