@@ -184,11 +184,11 @@ $('.grid-row').on('click','.grid-column', function(v) {
     console.log(div.position().left - 125);
     if ( noteLength === "4n") {
         var startTime = Math.floor((div.position().left) / 50);
-        startTime = "0:" + (startTime -2);
+        startTime = "0:" + (startTime -8);
 
     } else if (noteLength === "8n") {
         var startTime = Math.floor((div.position().left) / 25);
-        startTime = "0:0:" + ((startTime -5)*2);
+        startTime = "0:0:" + ((startTime -17));
 
     }
     console.log(startTime, note);
