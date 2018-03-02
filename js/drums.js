@@ -10,7 +10,6 @@ var drums = new Nexus.Sequencer("#drums", {
     'rows': 8,
     'columns': 16
 });
-
 drums.colorize('fill', '#364250');
 drums.colorize("accent","#8ADBED")
 
@@ -19,8 +18,8 @@ var kit = ['cym','perc2', 'perc1', 'tom2', 'tom1','hh','snare','kick' ]
 
 var kitSounds = new Tone.Players({
   "cym" : "./sounds/electric/crash.wav",
-  "perc1" : "./sounds/electric/clap.WAV",
-  "perc2" : "./sounds/electric/cowbell.wav",
+  "perc1" : "./sounds/electric/cowbell.wav",
+  "perc2" : "./sounds/electric/clap.WAV",
   "tom1" : "./sounds/electric/hightom.wav",
   "tom2" : "./sounds/electric/floortom.wav",
   "hh" : "./sounds/electric/hh.wav",
@@ -52,9 +51,7 @@ var khaled = fx.get('khaled')
 var airhorn = fx.get('airhorn')
 
 $(document).keypress(function(e) {
-  console.log(e.charCode)
   if (e.charCode == 107) {
-    console.log(khaled)//press k for khaled
     khaled.start();
     // socket.emit("solo_clear");
   }
@@ -62,9 +59,7 @@ $(document).keypress(function(e) {
 
 
 $(document).keypress(function(e) {
-  console.log(e.charCode)
   if (e.charCode == 104) {
-    console.log(airhorn); //press h for horn
     airhorn.start();
     // socket.emit("solo_clear");
   }
@@ -280,4 +275,3 @@ snareLabel.colorize("accent", "#6DCADE")
 
 kickLabel.colorize("fill", "#4D5B6A")
 kickLabel.colorize("accent", "#6DCADE")
-
