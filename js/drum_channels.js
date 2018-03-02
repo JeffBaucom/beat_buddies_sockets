@@ -1,7 +1,6 @@
-//set a global variable for mute status
-// var mute_status;
-// var solo_status
-// kick channel:
+
+var muteStatus;
+
 
 var kickSolo = new Tone.Solo(); //add a solo button
 var kickVolume = new Tone.Volume([ volume = -15 ]); //add a volume control
@@ -270,9 +269,9 @@ var perc1SoloButton = new Nexus.TextButton('#perc1-channel', { //create the solo
 
 var perc1MuteButton = new Nexus.TextButton('#perc1-channel', { //create the mute button UI
   'size': [35.5,35.5],
-    'alternateText': '<img src="./assets/icon-mute-white.svg" class="microphone-icon">',
+    'alternateText': '<img src="./assets/icon-mute-white.svg" class="perc1Mute microphone-icon">',
 'state': false,
-'text': '<img src="./assets/icon-mute-gray.svg" class="microphone-icon">'
+'text': '<img src="./assets/icon-mute-gray.svg" class="perc1Mute microphone-icon">'
 })
 
 var perc1Clear = new Nexus.TextButton ('#perc1-channel-clear', { //create the clear button ui
@@ -290,7 +289,7 @@ var perc1Clear = new Nexus.TextButton ('#perc1-channel-clear', { //create the cl
   })
   perc1MuteButton.on('change', function(v) { //activate the mute button
     perc1.mute = v;
-    socket.emit("perc1Mute", v)
+    socket.emit("perc1Mute", v);
 
   })
 
@@ -313,9 +312,9 @@ var cymSoloButton = new Nexus.TextButton('#cym-channel', { //create the solo but
 
 var cymMuteButton = new Nexus.TextButton('#cym-channel', { //create the mute button UI
   'size': [35.5,35.5],
-    'alternateText': '<img src="./assets/icon-mute-white.svg" class="microphone-icon">',
+    'alternateText': '<img src="./assets/icon-mute-white.svg" class="cymMute microphone-icon">',
 'state': false,
-'text': '<img src="./assets/icon-mute-gray.svg" class="microphone-icon">'
+'text': '<img src="./assets/icon-mute-gray.svg" class="cymMute microphone-icon">'
 })
 
 var cymClear = new Nexus.TextButton ('#cym-channel-clear', { //create the clear button ui
@@ -333,7 +332,7 @@ var cymClear = new Nexus.TextButton ('#cym-channel-clear', { //create the clear 
   })
   cymMuteButton.on('change', function(v) { //activate the mute button
     cym.mute = v;
-    socket.emit("cymMute", v)
+    socket.emit("cymMute", v);
   })
 
   cymClear.on('change', function(v) { //activate the clear button
