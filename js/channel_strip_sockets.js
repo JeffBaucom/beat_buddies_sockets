@@ -77,6 +77,7 @@ socket.on('tom1Solo', function(toggle) {
 socket.on('tom2Solo', function(toggle) {
   if (toggle != tom2Solo.solo) {
   tom2Solo.solo = toggle;
+
   tom2SoloButton.state = toggle;
 
   }
@@ -99,6 +100,8 @@ socket.on('snareSolo', function(toggle) {
 })
 
 socket.on('kickSolo', function(toggle) {
+  console.log("toggle", toggle);
+  console.log("buttonState:", SoloButton.state)
   if (toggle != kickSolo.solo) {
   kickSolo.solo = toggle;
   kickSoloButton.state = toggle;
