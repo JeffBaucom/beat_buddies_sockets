@@ -1,5 +1,5 @@
 .grid-wrapper {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     margin-top: -2px;
     box-sizing: border-box;
@@ -37,4 +37,12 @@
     width: 100%;
     height: 100%;
     z-index: 999;
+}
+
+#piano {
+
+}
+
+.synth-view {
+    margin: 0 auto !important;
 }

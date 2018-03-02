@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="9px" height="7px" viewBox="0 0 9 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-dropdown</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="assets" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-34.000000, -245.000000)">
+        <path d="M39.1999682,245.400059 L42.5999364,249.93335 C42.9313073,250.375178 42.8417642,251.001979 42.3999364,251.33335 C42.2268403,251.463172 42.0163067,251.53335 41.7999364,251.53335 L35,251.53335 C34.4477153,251.53335 34,251.085635 34,250.53335 C34,250.31698 34.0701779,250.106446 34.2,249.93335 L37.5999682,245.400059 C37.9313391,244.958231 38.5581404,244.868688 38.9999682,245.200059 C39.0757739,245.256913 39.143114,245.324253 39.1999682,245.400059 Z" id="icon-dropdown" fill="#6DCADE" transform="translate(38.399998, 248.266675) scale(1, -1) translate(-38.399998, -248.266675) "></path>
+    </g>
+</svg>

@@ -3,6 +3,20 @@
   padding: 0px;
 }
 
+body {
+    background-color: #262F39;
+}
+
+.fa-play {
+    margin-top: -.34em;
+    color: #6a7786;
+}
+
+.fa-pause {
+    margin-top: -.34em;
+    color: white;
+}
+
 div {
     color: white;
     text-color: white;
@@ -46,6 +60,7 @@ margin-left: 100px;
 #drum-container {
     display: flex;
     flex-direction: row;
+    margin-bottom: 2em;
 }
 
 #cym-channel-clear {
@@ -68,11 +83,11 @@ margin-left: 100px;
 }
 
 #drum-selector {
-    margin-right: 50px;
+    margin-right: 60px;
 }
 
 #tempo {
-    margin-right: 40px;
+    margin-right: 170px;
 }
 
 #tempoSlider {
@@ -82,6 +97,7 @@ margin-left: 100px;
 
 #tempoNumber {
     height: 40px;
+    color: white;
 }
 
 .wrapper {
@@ -100,5 +116,34 @@ margin-left: 100px;
 }
 
 #transport {
-    margin-bottom: .75em;
+    margin: 0 auto .75em;
 }
+
+.microphone-icon {
+    margin-top: -20em;
+}
+
+.white-text {
+    color: white;
+    font-size: 4.5em;
+    margin-top: -.6em;
+}
+
+#drum-selector select {
+    color: white !important;
+}
+
+#tempoNumber input {
+    color: white !important;
+    font-size: 1em !important;
+    height: 35px !important;
+}
+
+#play {
+    width: 100px !important;
+}
+
+#play div {
+    border-radius: 10px;
+}
+

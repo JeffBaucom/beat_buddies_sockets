@@ -2,7 +2,7 @@ $(document).ready(function (){
 
   // Declare slider and attach to div id
   var tempoSlider = new Nexus.Slider('#tempoSlider', {
-      'size': [240, 20],
+      'size': [240, 15],
       'min': 1,
       'max': 250,
       'mode': 'absolute',
@@ -10,15 +10,23 @@ $(document).ready(function (){
       'value': 110
   });
 
+    tempoSlider.colorize("accent", "#8ADBED")
+    tempoSlider.colorize("fill", "#364250")
+
   //initialize tempo at current value
   Tone.Transport.bpm.value = tempoSlider.value;
   var tempoNumber = new Nexus.Number('#tempoNumber');
   tempoNumber.link(tempoSlider); //link the slider and number label together
 
+    tempoNumber.colorize("fill", "#364250")
+
   var play = new Nexus.TextButton('#play', { //create the play button UI
       'text': '<i class="fas fa-play fa-5x"></i>',
       'alternateText': '<i class="fas fa-pause fa-5x"></i>'
   });
+
+    play.colorize("fill", "#364250")
+    play.colorize("accent", "#8ADBED")
   // var stop = new Nexus.TextButton('#stop', { //create the stop button UI
   //     'text': 'Stop'
   // });
