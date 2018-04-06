@@ -16,17 +16,7 @@ drums.colorize("accent","#8ADBED")
 var kit = ['cym','perc1', 'perc2', 'tom2', 'tom1','hh','snare','kick' ]
 
 
-var kitSounds = new Tone.Players({
-  "cym" : "./sounds/electric/crash.wav",
-  "perc1" : "./sounds/electric/cowbell.wav",
-  "perc2" : "./sounds/electric/clap.WAV",
-  "tom1" : "./sounds/electric/hightom.wav",
-  "tom2" : "./sounds/electric/floortom.wav",
-  "hh" : "./sounds/electric/hh.wav",
-  "snare" : "./sounds/electric/snare.wav",
-  "kick" : "./sounds/electric/kick.wav",
 
-}, {"volume" : -15, "fadeOut": "64n"});
 // .toMaster();
 //DISABLE TO MASTER FOR CHANNEL STRIP CONTROL
 

@@ -1,45 +1,45 @@
 
 // var muteStatus;
 //
-var kickSolo = new Tone.Solo(); //add a solo button
-var kickVolume = new Tone.Volume([ volume = -15 ]); //add a volume control
-var kickSoloButton = new Nexus.TextButton('#kick-channel', { //create the solo button UI
-  'size': [35.5,35.5],
-    'alternateText': '<img src="./assets/icon-solo-white.svg" class="microphone-icon">',
-'state': false,
-'text': '<img src="./assets/icon-solo-gray.svg" class="microphone-icon">'
-})
-
-var kickMuteButton = new Nexus.TextButton('#kick-channel', { //create the mute button UI
-  'size': [35.5,35.5],
-    'alternateText': '<img src="./assets/icon-mute-white.svg" class="microphone-icon">',
-'state': false,
-'text': '<img src="./assets/icon-mute-gray.svg" class="microphone-icon">'
-})
-
-var kickClear = new Nexus.TextButton ('#kick-channel-clear', { //create the clear button ui
-  'size': [35.5,35.5],
-'mode': 'aftertouch',
-'state': false,
-'text': '<img src="./assets/icon-clear-gray.svg" class="microphone-icon">'
-})
-
-  kick.chain(kickVolume, kickSolo,  Tone.Master); //connect the volume and solo buttons
-
-  kickSoloButton.on('change', function(v) { //activate the solo button -- REMOVE ALL PLAYERS TO MASTER
-    kickSolo.solo = v;
-    socket.emit("kickSolo", v)
-
-  })
-  kickMuteButton.on('change', function(v) { //activate the mute button
-    kick.mute = v;
-    socket.emit("kickMute", v)
-  })
-
-  kickClear.on('change', function(v) { //activate the clear button
-    drums.matrix.populate.row(7, [0,0])
-
-  })
+// var kickSolo = new Tone.Solo(); //add a solo button
+// var kickVolume = new Tone.Volume([ volume = -15 ]); //add a volume control
+// var kickSoloButton = new Nexus.TextButton('#kick-channel', { //create the solo button UI
+//   'size': [35.5,35.5],
+//     'alternateText': '<img src="./assets/icon-solo-white.svg" class="microphone-icon">',
+// 'state': false,
+// 'text': '<img src="./assets/icon-solo-gray.svg" class="microphone-icon">'
+// })
+//
+// var kickMuteButton = new Nexus.TextButton('#kick-channel', { //create the mute button UI
+//   'size': [35.5,35.5],
+//     'alternateText': '<img src="./assets/icon-mute-white.svg" class="microphone-icon">',
+// 'state': false,
+// 'text': '<img src="./assets/icon-mute-gray.svg" class="microphone-icon">'
+// })
+//
+// var kickClear = new Nexus.TextButton ('#kick-channel-clear', { //create the clear button ui
+//   'size': [35.5,35.5],
+// 'mode': 'aftertouch',
+// 'state': false,
+// 'text': '<img src="./assets/icon-clear-gray.svg" class="microphone-icon">'
+// })
+//
+//   kick.chain(kickVolume, kickSolo,  Tone.Master); //connect the volume and solo buttons
+//
+//   kickSoloButton.on('change', function(v) { //activate the solo button -- REMOVE ALL PLAYERS TO MASTER
+//     kickSolo.solo = v;
+//     socket.emit("kickSolo", v)
+//
+//   })
+//   kickMuteButton.on('change', function(v) { //activate the mute button
+//     kick.mute = v;
+//     socket.emit("kickMute", v)
+//   })
+//
+//   kickClear.on('change', function(v) { //activate the clear button
+//     drums.matrix.populate.row(7, [0,0])
+//
+//   })
 
 //
 //   //snare channel:
