@@ -6,8 +6,10 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="./css/styles.css">
-        <link rel="stylesheet" href="piStyles.css">
+    <link rel="stylesheet" href="piStyles.css">
 
 
 
@@ -34,9 +36,9 @@
             </div>
         </div>
 
-
         <div id="drum-container" class="drums d-flex flex-row justify-content-center">
             <div id="mixer" class = "d-flex flex-column">
+              <!-- create a div for each channel strip.-->
                 <div class = "button-row d-flex flex-row">
                     <div id="cym-channel-clear" class = "cym-channel d-flex flex-row"></div>
                     <div id="cym-label" class="label"></div>
@@ -110,10 +112,8 @@
 
 
 
-
     <script src="./node_modules/tone/build/Tone.js"></script>
     <script src="./node_modules/nexusui/dist/NexusUI.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
     <script src="https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js"></script>
 
@@ -162,7 +162,7 @@ var cssId = './css/styles.css';  // you could encode the css path itself to gene
 
 </script>
 <script type ="text/javascript" src="./js/drums.js"></script>
-<script type ="text/javascript" src="./js/drum_channels.js"></script>
+<script type ="text/javascript" src="./js/channelStrip.js"></script>
 <script type ="text/javascript" src="./js/channel_strip_sockets.js"></script>
 <script type ="text/javascript" src="./js/transport.js"></script>
 <script src="piroll.js"></script>
