@@ -13,17 +13,14 @@ var kitSounds = new Tone.Players({
 
 function Channel(name, row) {
 let parent = this;
-let div = document.getElementById('mixer');
-  div.innerHTML += "<div class ='button-row d-flex flex-row'>"
-+ "<div id='" + name + "-channel-clear' class ='" + name +"-channel d-flex flex-row'>"
-+ "</div><div id='" + name +"-label' class='label'></div>"
-  + "<div id='" + name + "-channel' class ='" + name + "-channel smButton d-flex flex-row'>"
-  +"</div></div>";
+// let div = document.getElementById('mixer');
+//   div.innerHTML += "<div class ='button-row d-flex flex-row'>"
+// + "<div id='" + name + "-channel-clear' class ='" + name +"-channel d-flex flex-row'>"
+// + "</div><div id='" + name +"-label' class='label'></div>"
+//   + "<div id='" + name + "-channel' class ='" + name + "-channel smButton d-flex flex-row'>"
+//   +"</div></div>";
 
   let player = kitSounds.get(name)
-
-  // this.player = kitSounds.get(name);
-
 
   let solo = new Tone.Solo();
   let volume = new Tone.Volume(); //[volume = -15 ]
@@ -69,8 +66,6 @@ let div = document.getElementById('mixer');
 
   //label click triggers playback
     label.on('change', function(v) {
-      console.log(player)
-
       if (v == true) {
         player.start()
       }
@@ -82,7 +77,7 @@ let div = document.getElementById('mixer');
   soloButton.on('change', function(v) { //activate the solo button -- REMOVE ALL PLAYERS TO MASTER
     console.log(player)
 
-    player.solo = v;
+    solo.solo = v;
     socket.emit(name+"Solo", v)
 
   })
@@ -93,7 +88,8 @@ let div = document.getElementById('mixer');
   })
 
   clear.on('change', function(v) { //activate the clear button
-    drums.matrix.populate.row(row, [0,0]) //HOW DOES THIS BECOME VARIABLE
+    drums.matrix.populate.row(row, [0,0]); //clear the row
+    socket.emit(name + "Clear", v); //socket emitter
 
   })
 
@@ -113,6 +109,11 @@ let div = document.getElementById('mixer');
     soloButton.state = toggle;
     }
   })
+
+//Clears
+socket.on(name + "Clear", function(clear) {
+  drums.matrix.populate.row(row, [0,0]);
+})
 
 
 //SIGNAL CHAIN

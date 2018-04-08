@@ -204,15 +204,19 @@ var drumUpdate = {} //global variable to save the change into
 
 drums.on('change', function(v) {
 drumUpdate = v; //reassign drumUpdate for the new change
-// console.log(drumUpdate);
 });
 
 $('#drums').children().click(function(v) {
+  console.log("drum click")
   socket.emit("note_on", drumUpdate)
 })
 // IDEA: to enable dragging, send entire pattern on drag-end or mouseup
 
 
+
+
+//on clear click, update "drumUpdate"
+//send drum update to sockets
 
 
 //receive the broadcast and toggle the cell
@@ -223,8 +227,6 @@ socket.on('add_note', function(data) {
     drums.matrix.toggle.cell(data.column, data.row);
   }
   });
-
-
 
 
 //DRUM SELECTOR

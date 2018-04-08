@@ -88,6 +88,38 @@ socket.on("kickSolo", function(toggle) {
 });
 
 
+
+//Clears
+socket.on("cymClear", function(v) {
+  socket.broadcast.emit('cymClear', v)
+});
+
+socket.on("perc1Clear", function(v) {
+  socket.broadcast.emit('perc1Clear', v)
+});
+
+socket.on("perc2Clear", function(v) {
+  socket.broadcast.emit('perc2Clear', v)
+});
+
+socket.on("tom1Clear", function(v) {
+  socket.broadcast.emit('tom1Clear', v)
+});
+
+socket.on("tom2Clear", function(v) {
+  socket.broadcast.emit('tom2Clear', v)
+});
+
+socket.on("hhClear", function(v) {
+  socket.broadcast.emit('hhClear', v)
+});
+socket.on("snareClear", function(v) {
+  socket.broadcast.emit('snareClear', v)
+
+});socket.on("kickClear", function(v) {
+  socket.broadcast.emit('kickClear', v)
+});
+
 //drum selector socket
 socket.on("changeDrums", function(value) {
   socket.broadcast.emit("changeDrums", value);
